@@ -11,7 +11,7 @@ Arduino Nano		|  $ 1,92	|     1		|  $1,92	|  http://www.aliexpress.com/item//199
 D-Pad (SKQUCAA010)	|  $10,93	|    20		|  $0,55	|  http://www.aliexpress.com/item//32354178656.html
 Resistors		|    free	|  many		|   free	|  
 
-Total $5,68
+Total $6,05
 
 # PCB
 40 pieces, 5x10cm (2 on 10x10), dual layer, 1.6mm, ENIG
