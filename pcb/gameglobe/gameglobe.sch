@@ -4716,6 +4716,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="DPAD" library="gamaral" deviceset="SKQU" device="CAA010"/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
+<part name="R1" library="resistor" deviceset="R-EU_" device="0207/10" value="220"/>
 </parts>
 <sheets>
 <sheet>
@@ -4743,6 +4744,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="GND7" gate="1" x="129.54" y="43.18"/>
 <instance part="DPAD" gate="Q$1" x="88.9" y="50.8"/>
 <instance part="GND8" gate="1" x="96.52" y="40.64"/>
+<instance part="R1" gate="G$1" x="33.02" y="40.64"/>
 </instances>
 <busses>
 </busses>
@@ -4882,11 +4884,16 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="38.1" y1="66.04" x2="10.16" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="BL_LCD" class="0">
+<net name="LED_LCD" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="7"/>
 <wire x1="182.88" y1="48.26" x2="160.02" y2="48.26" width="0.1524" layer="91"/>
 <label x="170.18" y="48.26" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R1" gate="G$1" pin="1"/>
+<wire x1="27.94" y1="40.64" x2="10.16" y2="40.64" width="0.1524" layer="91"/>
+<label x="10.16" y="40.64" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -4961,11 +4968,17 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="73.66" y1="48.26" x2="71.12" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="5.5V"/>
+<pinref part="R1" gate="G$1" pin="2"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
 <errors>
-<approved hash="106,1,147.32,50.8,BL_LCD,,,,,"/>
+<approved hash="104,1,96.52,43.18,DPAD,COMMON,GND,,,"/>
 </errors>
 </schematic>
 </drawing>
