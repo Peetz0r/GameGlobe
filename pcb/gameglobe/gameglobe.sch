@@ -4808,7 +4808,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="GND8" gate="1" pin="GND"/>
 </segment>
 </net>
-<net name="RST_LCD" class="0">
+<net name="LCD_RST" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="1"/>
 <wire x1="182.88" y1="63.5" x2="160.02" y2="63.5" width="0.1524" layer="91"/>
@@ -4824,7 +4824,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="116.84" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="DC_LCD" class="0">
+<net name="LCD_DC" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="3"/>
 <wire x1="182.88" y1="58.42" x2="160.02" y2="58.42" width="0.1524" layer="91"/>
@@ -4840,7 +4840,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="116.84" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="DIN_LCD" class="0">
+<net name="LCD_DIN" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="4"/>
 <wire x1="182.88" y1="55.88" x2="160.02" y2="55.88" width="0.1524" layer="91"/>
@@ -4856,7 +4856,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="116.84" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="CLK_LCD" class="0">
+<net name="LCD_CLK" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="5"/>
 <wire x1="182.88" y1="53.34" x2="160.02" y2="53.34" width="0.1524" layer="91"/>
@@ -4872,7 +4872,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="10.16" y="68.58" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="VCC_LCD" class="0">
+<net name="LCD_VCC" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="6"/>
 <wire x1="182.88" y1="50.8" x2="160.02" y2="50.8" width="0.1524" layer="91"/>
@@ -4884,7 +4884,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="38.1" y1="66.04" x2="10.16" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="LED_LCD" class="0">
+<net name="LCD_LED" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="7"/>
 <wire x1="182.88" y1="48.26" x2="160.02" y2="48.26" width="0.1524" layer="91"/>
@@ -4923,14 +4923,14 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="101.6" y1="60.96" x2="71.12" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$5" class="0">
+<net name="DPAD_UP" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="D8"/>
 <pinref part="DPAD" gate="Q$1" pin="UP"/>
 <wire x1="71.12" y1="58.42" x2="81.28" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$6" class="0">
+<net name="DPAD_DOWN" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="DOWN"/>
 <wire x1="81.28" y1="43.18" x2="78.74" y2="43.18" width="0.1524" layer="91"/>
@@ -4939,7 +4939,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="78.74" y1="55.88" x2="71.12" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$8" class="0">
+<net name="DPAD_LEFT" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="LEFT"/>
 <wire x1="81.28" y1="50.8" x2="81.28" y2="53.34" width="0.1524" layer="91"/>
@@ -4947,7 +4947,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="81.28" y1="53.34" x2="71.12" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$9" class="0">
+<net name="DPAD_RIGHT" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="RIGHT"/>
 <wire x1="96.52" y1="50.8" x2="96.52" y2="48.26" width="0.1524" layer="91"/>
@@ -4957,7 +4957,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="76.2" y1="50.8" x2="71.12" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$10" class="0">
+<net name="DPAD_CENTER" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="CENTER"/>
 <wire x1="96.52" y1="58.42" x2="99.06" y2="58.42" width="0.1524" layer="91"/>
