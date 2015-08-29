@@ -4695,7 +4695,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </class>
 </classes>
 <parts>
-<part name="U$1" library="Arduino-clone" deviceset="NANO" device=""/>
+<part name="ARDUINO_NANO" library="Arduino-clone" deviceset="NANO" device=""/>
 <part name="+9V" library="wirepad" deviceset="WIREPAD" device="2,54/1,1"/>
 <part name="GND" library="wirepad" deviceset="WIREPAD" device="2,54/1,1"/>
 <part name="R5" library="resistor" deviceset="R-EU_" device="0207/10" value="10k"/>
@@ -4723,7 +4723,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <plain>
 </plain>
 <instances>
-<instance part="U$1" gate="G$1" x="60.96" y="53.34"/>
+<instance part="ARDUINO_NANO" gate="G$1" x="60.96" y="53.34"/>
 <instance part="+9V" gate="G$1" x="17.78" y="33.02"/>
 <instance part="GND" gate="G$1" x="17.78" y="35.56"/>
 <instance part="R5" gate="G$1" x="33.02" y="68.58"/>
@@ -4751,7 +4751,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <nets>
 <net name="N$7" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="RAW"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="RAW"/>
 <wire x1="38.1" y1="33.02" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
 <pinref part="+9V" gate="G$1" pin="P"/>
 </segment>
@@ -4759,12 +4759,12 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <net name="GND" class="0">
 <segment>
 <pinref part="GND1" gate="1" pin="GND"/>
-<pinref part="U$1" gate="G$1" pin="GND2"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="GND2"/>
 <wire x1="71.12" y1="40.64" x2="76.2" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="40.64" x2="76.2" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="GND"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="GND"/>
 <wire x1="20.32" y1="35.56" x2="30.48" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="GND2" gate="1" pin="GND"/>
 <wire x1="33.02" y1="35.56" x2="38.1" y2="35.56" width="0.1524" layer="91"/>
@@ -4879,7 +4879,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <label x="170.18" y="50.8" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="3.3V"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="3.3V"/>
 <label x="10.16" y="66.04" size="1.778" layer="95"/>
 <wire x1="38.1" y1="66.04" x2="10.16" y2="66.04" width="0.1524" layer="91"/>
 </segment>
@@ -4898,34 +4898,34 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </net>
 <net name="N$1" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="D13"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="D13"/>
 <pinref part="R5" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="N$2" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="D11"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="D11"/>
 <pinref part="R10" gate="G$1" pin="1"/>
 <wire x1="101.6" y1="66.04" x2="71.12" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="D10"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="D10"/>
 <pinref part="R11" gate="G$1" pin="1"/>
 <wire x1="101.6" y1="63.5" x2="71.12" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="D9"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="D9"/>
 <pinref part="R12" gate="G$1" pin="1"/>
 <wire x1="101.6" y1="60.96" x2="71.12" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DPAD_UP" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="D8"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="D8"/>
 <pinref part="DPAD" gate="Q$1" pin="UP"/>
 <wire x1="71.12" y1="58.42" x2="81.28" y2="58.42" width="0.1524" layer="91"/>
 </segment>
@@ -4935,7 +4935,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="DPAD" gate="Q$1" pin="DOWN"/>
 <wire x1="81.28" y1="43.18" x2="78.74" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="43.18" x2="78.74" y2="55.88" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="D7"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="D7"/>
 <wire x1="78.74" y1="55.88" x2="71.12" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -4943,7 +4943,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="LEFT"/>
 <wire x1="81.28" y1="50.8" x2="81.28" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="D6"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="D6"/>
 <wire x1="81.28" y1="53.34" x2="71.12" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -4953,7 +4953,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="96.52" y1="50.8" x2="96.52" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="48.26" x2="76.2" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="48.26" x2="76.2" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="D5"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="D5"/>
 <wire x1="76.2" y1="50.8" x2="71.12" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -4964,13 +4964,13 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <wire x1="99.06" y1="58.42" x2="99.06" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="45.72" x2="73.66" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="45.72" x2="73.66" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="D4"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="D4"/>
 <wire x1="73.66" y1="48.26" x2="71.12" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$11" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="5.5V"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="5.5V"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 </segment>
 </net>
