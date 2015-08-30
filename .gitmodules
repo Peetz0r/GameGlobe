@@ -1,0 +1,9 @@
+[submodule "lib/Bounce2"]
+	path = lib/Bounce2
+	url = git@github.com:thomasfredericks/Bounce2.git
+[submodule "lib/Adafruit-GFX-Library"]
+	path = lib/Adafruit-GFX-Library
+	url = git@github.com:adafruit/Adafruit-GFX-Library.git
+[submodule "lib/Adafruit-PCD8544-Nokia-5110-LCD-library"]
+	path = lib/Adafruit-PCD8544-Nokia-5110-LCD-library
+	url = git@github.com:adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library.git
