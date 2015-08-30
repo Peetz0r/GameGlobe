@@ -138,149 +138,6 @@
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
-<library name="Arduino-clone">
-<description>Arduino Clone pinheaders
-By cl@xganon.com
-http://www.xganon.com</description>
-<packages>
-<package name="NANO">
-<pad name="TX0" x="5.08" y="-8.89" drill="0.8" shape="long"/>
-<pad name="RX1" x="5.08" y="-6.35" drill="0.8" shape="long"/>
-<pad name="RST1" x="5.08" y="-3.81" drill="0.8" shape="long"/>
-<pad name="GND1" x="5.08" y="-1.27" drill="0.8" shape="long"/>
-<pad name="D2" x="5.08" y="1.27" drill="0.8" shape="long"/>
-<pad name="D3" x="5.08" y="3.81" drill="0.8" shape="long"/>
-<pad name="D4" x="5.08" y="6.35" drill="0.8" shape="long"/>
-<pad name="D5" x="5.08" y="8.89" drill="0.8" shape="long"/>
-<pad name="D6" x="5.08" y="11.43" drill="0.8" shape="long"/>
-<pad name="D7" x="5.08" y="13.97" drill="0.8" shape="long"/>
-<pad name="D8" x="5.08" y="16.51" drill="0.8" shape="long"/>
-<pad name="D9" x="5.08" y="19.05" drill="0.8" shape="long"/>
-<pad name="RAW" x="-10.16" y="-8.89" drill="0.8" shape="long"/>
-<pad name="GND" x="-10.16" y="-6.35" drill="0.8" shape="long"/>
-<pad name="RST" x="-10.16" y="-3.81" drill="0.8" shape="long"/>
-<pad name="A3" x="-10.16" y="11.43" drill="0.8" shape="long"/>
-<pad name="A2" x="-10.16" y="13.97" drill="0.8" shape="long"/>
-<pad name="A1" x="-10.16" y="16.51" drill="0.8" shape="long"/>
-<pad name="A0" x="-10.16" y="19.05" drill="0.8" shape="long"/>
-<pad name="D13" x="-10.16" y="26.67" drill="0.8" shape="long"/>
-<pad name="D12" x="5.08" y="26.67" drill="0.8" shape="long"/>
-<pad name="D11" x="5.08" y="24.13" drill="0.8" shape="long"/>
-<pad name="D10" x="5.08" y="21.59" drill="0.8" shape="long"/>
-<pad name="3.3V" x="-10.16" y="24.13" drill="0.8" shape="long" rot="R180"/>
-<pad name="AREF" x="-10.16" y="21.59" drill="0.8" shape="long" rot="R180"/>
-<pad name="5V" x="-10.16" y="-1.27" drill="0.8" shape="long"/>
-<pad name="ICSP2" x="-5.08" y="-7.62" drill="0.8" rot="R90"/>
-<pad name="ICSP4" x="-2.54" y="-7.62" drill="0.8" rot="R90"/>
-<pad name="ICSP6" x="0" y="-7.62" drill="0.8" rot="R90"/>
-<pad name="A4" x="-10.16" y="8.89" drill="0.8" shape="long" rot="R180"/>
-<pad name="A5" x="-10.16" y="6.35" drill="0.8" shape="long" rot="R180"/>
-<pad name="A6" x="-10.16" y="3.81" drill="0.8" shape="long" rot="R180"/>
-<pad name="A7" x="-10.16" y="1.27" drill="0.8" shape="long" rot="R180"/>
-<pad name="ICSP1" x="-5.08" y="-10.16" drill="0.8" rot="R90"/>
-<pad name="ICSP3" x="-2.54" y="-10.16" drill="0.8" rot="R90"/>
-<pad name="ICSP5" x="0" y="-10.16" drill="0.8" rot="R90"/>
-</package>
-</packages>
-<symbols>
-<symbol name="NANO">
-<pin name="3.3V" x="-22.86" y="12.7" visible="pin" length="middle"/>
-<pin name="AREF" x="-22.86" y="10.16" visible="pin" length="middle"/>
-<pin name="ICSP1" x="-10.16" y="-27.94" visible="off" length="point" rot="R270"/>
-<pin name="ICSP2" x="-10.16" y="-25.4" visible="off" length="point" rot="R270"/>
-<pin name="ICSP3" x="-7.62" y="-27.94" visible="off" length="point" rot="R270"/>
-<pin name="ICSP4" x="-7.62" y="-25.4" visible="off" length="point" rot="R270"/>
-<pin name="TX0" x="10.16" y="-20.32" visible="pin" length="middle" rot="R180"/>
-<pin name="RX1" x="10.16" y="-17.78" visible="pin" length="middle" rot="R180"/>
-<pin name="RST1" x="10.16" y="-15.24" visible="pin" length="middle" rot="R180"/>
-<pin name="GND2" x="10.16" y="-12.7" visible="pin" length="middle" rot="R180"/>
-<pin name="D2" x="10.16" y="-10.16" visible="pin" length="middle" rot="R180"/>
-<pin name="D3" x="10.16" y="-7.62" visible="pin" length="middle" rot="R180"/>
-<pin name="D4" x="10.16" y="-5.08" visible="pin" length="middle" rot="R180"/>
-<pin name="D5" x="10.16" y="-2.54" visible="pin" length="middle" rot="R180"/>
-<pin name="D6" x="10.16" y="0" visible="pin" length="middle" rot="R180"/>
-<pin name="D7" x="10.16" y="2.54" visible="pin" length="middle" rot="R180"/>
-<pin name="D8" x="10.16" y="5.08" visible="pin" length="middle" rot="R180"/>
-<pin name="D9" x="10.16" y="7.62" visible="pin" length="middle" rot="R180"/>
-<pin name="RAW" x="-22.86" y="-20.32" visible="pin" length="middle"/>
-<pin name="GND" x="-22.86" y="-17.78" visible="pin" length="middle"/>
-<pin name="RST" x="-22.86" y="-15.24" visible="pin" length="middle"/>
-<pin name="5.5V" x="-22.86" y="-12.7" visible="pin" length="middle"/>
-<pin name="A3" x="-22.86" y="0" visible="pin" length="middle"/>
-<pin name="A2" x="-22.86" y="2.54" visible="pin" length="middle"/>
-<pin name="A1" x="-22.86" y="5.08" visible="pin" length="middle"/>
-<pin name="A0" x="-22.86" y="7.62" visible="pin" length="middle"/>
-<pin name="D13" x="-22.86" y="15.24" visible="pin" length="middle"/>
-<pin name="D12" x="10.16" y="15.24" visible="pin" length="middle" rot="R180"/>
-<pin name="D11" x="10.16" y="12.7" visible="pin" length="middle" rot="R180"/>
-<pin name="D10" x="10.16" y="10.16" visible="pin" length="middle" rot="R180"/>
-<pin name="A7" x="-22.86" y="-10.16" visible="pin" length="middle"/>
-<pin name="A6" x="-22.86" y="-7.62" visible="pin" length="middle"/>
-<pin name="A5" x="-22.86" y="-5.08" visible="pin" length="middle"/>
-<pin name="A4" x="-22.86" y="-2.54" visible="pin" length="middle"/>
-<pin name="ICSP5" x="-5.08" y="-27.94" visible="off" length="point" rot="R270"/>
-<pin name="ICSP6" x="-5.08" y="-25.4" visible="off" length="point" rot="R270"/>
-<wire x1="-17.78" y1="17.78" x2="-17.78" y2="-30.48" width="0.254" layer="94"/>
-<wire x1="-17.78" y1="-30.48" x2="5.08" y2="-30.48" width="0.254" layer="94"/>
-<wire x1="5.08" y1="-30.48" x2="5.08" y2="17.78" width="0.254" layer="94"/>
-<wire x1="5.08" y1="17.78" x2="-17.78" y2="17.78" width="0.254" layer="94"/>
-<text x="-12.7" y="20.32" size="1.778" layer="95">Arduino Nano</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="NANO">
-<description>Arduino Nano</description>
-<gates>
-<gate name="G$1" symbol="NANO" x="7.62" y="2.54"/>
-</gates>
-<devices>
-<device name="" package="NANO">
-<connects>
-<connect gate="G$1" pin="3.3V" pad="3.3V"/>
-<connect gate="G$1" pin="5.5V" pad="5V"/>
-<connect gate="G$1" pin="A0" pad="A0"/>
-<connect gate="G$1" pin="A1" pad="A1"/>
-<connect gate="G$1" pin="A2" pad="A2"/>
-<connect gate="G$1" pin="A3" pad="A3"/>
-<connect gate="G$1" pin="A4" pad="A4"/>
-<connect gate="G$1" pin="A5" pad="A5"/>
-<connect gate="G$1" pin="A6" pad="A6"/>
-<connect gate="G$1" pin="A7" pad="A7"/>
-<connect gate="G$1" pin="AREF" pad="AREF"/>
-<connect gate="G$1" pin="D10" pad="D10"/>
-<connect gate="G$1" pin="D11" pad="D11"/>
-<connect gate="G$1" pin="D12" pad="D12"/>
-<connect gate="G$1" pin="D13" pad="D13"/>
-<connect gate="G$1" pin="D2" pad="D2"/>
-<connect gate="G$1" pin="D3" pad="D3"/>
-<connect gate="G$1" pin="D4" pad="D4"/>
-<connect gate="G$1" pin="D5" pad="D5"/>
-<connect gate="G$1" pin="D6" pad="D6"/>
-<connect gate="G$1" pin="D7" pad="D7"/>
-<connect gate="G$1" pin="D8" pad="D8"/>
-<connect gate="G$1" pin="D9" pad="D9"/>
-<connect gate="G$1" pin="GND" pad="GND"/>
-<connect gate="G$1" pin="GND2" pad="GND1"/>
-<connect gate="G$1" pin="ICSP1" pad="ICSP1"/>
-<connect gate="G$1" pin="ICSP2" pad="ICSP2"/>
-<connect gate="G$1" pin="ICSP3" pad="ICSP3"/>
-<connect gate="G$1" pin="ICSP4" pad="ICSP4"/>
-<connect gate="G$1" pin="ICSP5" pad="ICSP5"/>
-<connect gate="G$1" pin="ICSP6" pad="ICSP6"/>
-<connect gate="G$1" pin="RAW" pad="RAW"/>
-<connect gate="G$1" pin="RST" pad="RST"/>
-<connect gate="G$1" pin="RST1" pad="RST1"/>
-<connect gate="G$1" pin="RX1" pad="RX1"/>
-<connect gate="G$1" pin="TX0" pad="TX0"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="wirepad">
 <description>&lt;b&gt;Single Pads&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
@@ -4685,6 +4542,136 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </deviceset>
 </devicesets>
 </library>
+<library name="jet-lib">
+<packages>
+<package name="PDIP-32">
+<wire x1="-1.524" y1="1.524" x2="16.764" y2="1.524" width="0.127" layer="21"/>
+<wire x1="16.764" y1="1.524" x2="16.764" y2="-42.164" width="0.127" layer="21"/>
+<wire x1="16.764" y1="-42.164" x2="-1.524" y2="-42.164" width="0.127" layer="21"/>
+<wire x1="-1.524" y1="-42.164" x2="-1.524" y2="1.524" width="0.127" layer="21"/>
+<pad name="D1/TX" x="0" y="-2.54" drill="0.8" diameter="1.778" shape="square"/>
+<pad name="D0/RX" x="0" y="-5.08" drill="0.8" diameter="1.778"/>
+<pad name="RESET" x="0" y="-7.62" drill="0.8" diameter="1.778"/>
+<pad name="GND" x="0" y="-10.16" drill="0.8" diameter="1.778"/>
+<pad name="D2" x="0" y="-12.7" drill="0.8" diameter="1.778"/>
+<pad name="D3" x="0" y="-15.24" drill="0.8" diameter="1.778"/>
+<pad name="D4" x="0" y="-17.78" drill="0.8" diameter="1.778"/>
+<pad name="D5" x="0" y="-20.32" drill="0.8" diameter="1.778"/>
+<pad name="D6" x="0" y="-22.86" drill="0.8" diameter="1.778"/>
+<pad name="D7" x="0" y="-25.4" drill="0.8" diameter="1.778"/>
+<pad name="D8" x="0" y="-27.94" drill="0.8" diameter="1.778"/>
+<pad name="D9" x="0" y="-30.48" drill="0.8" diameter="1.778"/>
+<pad name="D10" x="0" y="-33.02" drill="0.8" diameter="1.778"/>
+<pad name="D11" x="0" y="-35.56" drill="0.8" diameter="1.778"/>
+<pad name="D12" x="0" y="-38.1" drill="0.8" diameter="1.778"/>
+<pad name="VIN" x="15.24" y="-2.54" drill="0.8" diameter="1.778"/>
+<pad name="GND1" x="15.24" y="-5.08" drill="0.8" diameter="1.778"/>
+<pad name="RESET1" x="15.24" y="-7.62" drill="0.8" diameter="1.778"/>
+<pad name="+5V" x="15.24" y="-10.16" drill="0.8" diameter="1.778"/>
+<pad name="A0" x="15.24" y="-12.7" drill="0.8" diameter="1.778"/>
+<pad name="A1" x="15.24" y="-15.24" drill="0.8" diameter="1.778"/>
+<pad name="A2" x="15.24" y="-17.78" drill="0.8" diameter="1.778"/>
+<pad name="A3" x="15.24" y="-20.32" drill="0.8" diameter="1.778"/>
+<pad name="A4" x="15.24" y="-22.86" drill="0.8" diameter="1.778"/>
+<pad name="A5" x="15.24" y="-25.4" drill="0.8" diameter="1.778"/>
+<pad name="A6" x="15.24" y="-27.94" drill="0.8" diameter="1.778"/>
+<pad name="A7" x="15.24" y="-30.48" drill="0.8" diameter="1.778"/>
+<pad name="AREF" x="15.24" y="-33.02" drill="0.8" diameter="1.778"/>
+<pad name="3V3" x="15.24" y="-35.56" drill="0.8" diameter="1.778"/>
+<pad name="D13" x="15.24" y="-38.1" drill="0.8" diameter="1.778"/>
+<text x="-0.762" y="2.286" size="1.27" layer="25">Name</text>
+<text x="-1.27" y="-44.704" size="1.27" layer="25">Value</text>
+<hole x="0" y="0" drill="1.778"/>
+<hole x="0" y="-40.64" drill="1.778"/>
+<hole x="15.24" y="-40.64" drill="1.778"/>
+<hole x="15.24" y="0" drill="1.778"/>
+</package>
+</packages>
+<symbols>
+<symbol name="ARDUINONANO">
+<wire x1="0" y1="-76.2" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="20.32" y2="0" width="0.254" layer="94"/>
+<wire x1="20.32" y1="0" x2="20.32" y2="-76.2" width="0.254" layer="94"/>
+<wire x1="20.32" y1="-76.2" x2="0" y2="-76.2" width="0.254" layer="94"/>
+<pin name="D1/TX" x="-5.08" y="-2.54" visible="pin" length="middle"/>
+<pin name="D0/RX" x="-5.08" y="-7.62" visible="pin" length="middle"/>
+<pin name="RESET" x="-5.08" y="-12.7" visible="pin" length="middle"/>
+<pin name="GND" x="-5.08" y="-17.78" visible="pin" length="middle"/>
+<pin name="D2" x="-5.08" y="-22.86" visible="pin" length="middle"/>
+<pin name="D3" x="-5.08" y="-27.94" visible="pin" length="middle"/>
+<pin name="D4" x="-5.08" y="-33.02" visible="pin" length="middle"/>
+<pin name="D5" x="-5.08" y="-38.1" visible="pin" length="middle"/>
+<pin name="D6" x="-5.08" y="-43.18" visible="pin" length="middle"/>
+<pin name="D7" x="-5.08" y="-48.26" visible="pin" length="middle"/>
+<pin name="D8" x="-5.08" y="-53.34" visible="pin" length="middle"/>
+<pin name="D9" x="-5.08" y="-58.42" visible="pin" length="middle"/>
+<pin name="D10" x="-5.08" y="-63.5" visible="pin" length="middle"/>
+<pin name="D11" x="-5.08" y="-68.58" visible="pin" length="middle"/>
+<pin name="D12" x="-5.08" y="-73.66" visible="pin" length="middle"/>
+<pin name="VIN" x="25.4" y="-2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="GND1" x="25.4" y="-7.62" visible="pin" length="middle" rot="R180"/>
+<pin name="RESET1" x="25.4" y="-12.7" visible="pin" length="middle" rot="R180"/>
+<pin name="+5V" x="25.4" y="-17.78" visible="pin" length="middle" rot="R180"/>
+<pin name="A0" x="25.4" y="-22.86" visible="pin" length="middle" rot="R180"/>
+<pin name="A1" x="25.4" y="-27.94" visible="pin" length="middle" rot="R180"/>
+<pin name="A2" x="25.4" y="-33.02" visible="pin" length="middle" rot="R180"/>
+<pin name="A3" x="25.4" y="-38.1" visible="pin" length="middle" rot="R180"/>
+<pin name="A4" x="25.4" y="-43.18" visible="pin" length="middle" rot="R180"/>
+<pin name="A5" x="25.4" y="-48.26" visible="pin" length="middle" rot="R180"/>
+<pin name="A6" x="25.4" y="-53.34" visible="pin" length="middle" rot="R180"/>
+<pin name="A7" x="25.4" y="-58.42" visible="pin" length="middle" rot="R180"/>
+<pin name="AREF" x="25.4" y="-63.5" visible="pin" length="middle" rot="R180"/>
+<pin name="3V3" x="25.4" y="-68.58" visible="pin" length="middle" rot="R180"/>
+<pin name="D13" x="25.4" y="-73.66" visible="pin" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="ARDUINONANO">
+<gates>
+<gate name="G$1" symbol="ARDUINONANO" x="-10.16" y="38.1"/>
+</gates>
+<devices>
+<device name="" package="PDIP-32">
+<connects>
+<connect gate="G$1" pin="+5V" pad="+5V"/>
+<connect gate="G$1" pin="3V3" pad="3V3"/>
+<connect gate="G$1" pin="A0" pad="A0"/>
+<connect gate="G$1" pin="A1" pad="A1"/>
+<connect gate="G$1" pin="A2" pad="A2"/>
+<connect gate="G$1" pin="A3" pad="A3"/>
+<connect gate="G$1" pin="A4" pad="A4"/>
+<connect gate="G$1" pin="A5" pad="A5"/>
+<connect gate="G$1" pin="A6" pad="A6"/>
+<connect gate="G$1" pin="A7" pad="A7"/>
+<connect gate="G$1" pin="AREF" pad="AREF"/>
+<connect gate="G$1" pin="D0/RX" pad="D0/RX"/>
+<connect gate="G$1" pin="D1/TX" pad="D1/TX"/>
+<connect gate="G$1" pin="D10" pad="D10"/>
+<connect gate="G$1" pin="D11" pad="D11"/>
+<connect gate="G$1" pin="D12" pad="D12"/>
+<connect gate="G$1" pin="D13" pad="D13"/>
+<connect gate="G$1" pin="D2" pad="D2"/>
+<connect gate="G$1" pin="D3" pad="D3"/>
+<connect gate="G$1" pin="D4" pad="D4"/>
+<connect gate="G$1" pin="D5" pad="D5"/>
+<connect gate="G$1" pin="D6" pad="D6"/>
+<connect gate="G$1" pin="D7" pad="D7"/>
+<connect gate="G$1" pin="D8" pad="D8"/>
+<connect gate="G$1" pin="D9" pad="D9"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="GND1" pad="GND1"/>
+<connect gate="G$1" pin="RESET" pad="RESET"/>
+<connect gate="G$1" pin="RESET1" pad="RESET1"/>
+<connect gate="G$1" pin="VIN" pad="VIN"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -4695,17 +4682,16 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </class>
 </classes>
 <parts>
-<part name="ARDUINO_NANO" library="Arduino-clone" deviceset="NANO" device=""/>
-<part name="+9V" library="wirepad" deviceset="WIREPAD" device="2,54/1,1"/>
-<part name="GND" library="wirepad" deviceset="WIREPAD" device="2,54/1,1"/>
-<part name="R5" library="resistor" deviceset="R-EU_" device="0207/10" value="10k"/>
-<part name="R10" library="resistor" deviceset="R-EU_" device="0207/10" value="10k"/>
-<part name="R11" library="resistor" deviceset="R-EU_" device="0207/10" value="10k"/>
-<part name="R12" library="resistor" deviceset="R-EU_" device="0207/10" value="10k"/>
-<part name="R13" library="resistor" deviceset="R-EU_" device="0207/10" value="20k"/>
-<part name="R14" library="resistor" deviceset="R-EU_" device="0207/10" value="20k"/>
-<part name="R15" library="resistor" deviceset="R-EU_" device="0207/10" value="20k"/>
-<part name="R16" library="resistor" deviceset="R-EU_" device="0207/10" value="20k"/>
+<part name="+" library="wirepad" deviceset="WIREPAD" device="2,54/1,1"/>
+<part name="-" library="wirepad" deviceset="WIREPAD" device="2,54/1,1"/>
+<part name="R5" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
+<part name="R10" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
+<part name="R11" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
+<part name="R12" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
+<part name="R13" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
+<part name="R14" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
+<part name="R15" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
+<part name="R16" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="JP1" library="SparkFun-Connectors" deviceset="M08" device="NO_SILK" value="LCD"/>
@@ -4716,62 +4702,66 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="DPAD" library="gamaral" deviceset="SKQU" device="CAA010"/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
-<part name="R1" library="resistor" deviceset="R-EU_" device="0207/10" value="220"/>
+<part name="R1" library="resistor" deviceset="R-EU_" device="0411/15" value="220"/>
+<part name="U$5" library="jet-lib" deviceset="ARDUINONANO" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 </plain>
 <instances>
-<instance part="ARDUINO_NANO" gate="G$1" x="60.96" y="53.34"/>
-<instance part="+9V" gate="G$1" x="17.78" y="33.02"/>
-<instance part="GND" gate="G$1" x="17.78" y="35.56"/>
-<instance part="R5" gate="G$1" x="33.02" y="68.58"/>
-<instance part="R10" gate="G$1" x="106.68" y="66.04"/>
-<instance part="R11" gate="G$1" x="106.68" y="63.5"/>
-<instance part="R12" gate="G$1" x="106.68" y="60.96"/>
-<instance part="R13" gate="G$1" x="25.4" y="58.42" rot="R90"/>
-<instance part="R14" gate="G$1" x="114.3" y="50.8" rot="R90"/>
-<instance part="R15" gate="G$1" x="121.92" y="50.8" rot="R90"/>
-<instance part="R16" gate="G$1" x="129.54" y="50.8" rot="R90"/>
+<instance part="+" gate="G$1" x="-20.32" y="33.02"/>
+<instance part="-" gate="G$1" x="-20.32" y="35.56"/>
+<instance part="R5" gate="G$1" x="-5.08" y="68.58"/>
+<instance part="R10" gate="G$1" x="114.3" y="86.36"/>
+<instance part="R11" gate="G$1" x="114.3" y="81.28"/>
+<instance part="R12" gate="G$1" x="114.3" y="76.2"/>
+<instance part="R13" gate="G$1" x="-12.7" y="58.42" rot="R90"/>
+<instance part="R14" gate="G$1" x="121.92" y="66.04" rot="R90"/>
+<instance part="R15" gate="G$1" x="129.54" y="66.04" rot="R90"/>
+<instance part="R16" gate="G$1" x="137.16" y="66.04" rot="R90"/>
 <instance part="GND1" gate="1" x="76.2" y="7.62"/>
-<instance part="GND2" gate="1" x="33.02" y="7.62"/>
+<instance part="GND2" gate="1" x="-5.08" y="7.62"/>
 <instance part="JP1" gate="G$1" x="187.96" y="55.88" rot="R180"/>
 <instance part="GND3" gate="1" x="167.64" y="7.62"/>
-<instance part="GND4" gate="1" x="25.4" y="48.26"/>
-<instance part="GND5" gate="1" x="114.3" y="43.18"/>
-<instance part="GND6" gate="1" x="121.92" y="43.18"/>
-<instance part="GND7" gate="1" x="129.54" y="43.18"/>
+<instance part="GND4" gate="1" x="-12.7" y="48.26"/>
+<instance part="GND5" gate="1" x="121.92" y="58.42"/>
+<instance part="GND6" gate="1" x="129.54" y="58.42"/>
+<instance part="GND7" gate="1" x="137.16" y="58.42"/>
 <instance part="DPAD" gate="Q$1" x="88.9" y="50.8"/>
 <instance part="GND8" gate="1" x="96.52" y="40.64"/>
-<instance part="R1" gate="G$1" x="33.02" y="40.64"/>
+<instance part="R1" gate="G$1" x="-10.16" y="40.64"/>
+<instance part="U$5" gate="G$1" x="45.72" y="12.7" rot="R180"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="N$7" class="0">
 <segment>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="RAW"/>
-<wire x1="38.1" y1="33.02" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
-<pinref part="+9V" gate="G$1" pin="P"/>
+<pinref part="+" gate="G$1" pin="P"/>
+<wire x1="7.62" y1="33.02" x2="-17.78" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="33.02" x2="7.62" y2="15.24" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="VIN"/>
+<wire x1="7.62" y1="15.24" x2="20.32" y2="15.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
 <pinref part="GND1" gate="1" pin="GND"/>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="GND2"/>
-<wire x1="71.12" y1="40.64" x2="76.2" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="40.64" x2="76.2" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="30.48" x2="76.2" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="30.48" x2="76.2" y2="10.16" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="GND"/>
-<wire x1="20.32" y1="35.56" x2="30.48" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="35.56" x2="-5.08" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="GND2" gate="1" pin="GND"/>
-<wire x1="33.02" y1="35.56" x2="38.1" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="30.48" y1="35.56" x2="33.02" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="35.56" x2="33.02" y2="10.16" width="0.1524" layer="91"/>
-<junction x="33.02" y="35.56"/>
-<pinref part="GND" gate="G$1" pin="P"/>
+<wire x1="-5.08" y1="35.56" x2="10.16" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="35.56" x2="-5.08" y2="10.16" width="0.1524" layer="91"/>
+<junction x="-5.08" y="35.56"/>
+<pinref part="-" gate="G$1" pin="P"/>
+<wire x1="10.16" y1="35.56" x2="10.16" y2="20.32" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="GND1"/>
+<wire x1="10.16" y1="20.32" x2="20.32" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="167.64" y1="60.96" x2="167.64" y2="45.72" width="0.1524" layer="91"/>
@@ -4789,7 +4779,7 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <pinref part="R13" gate="G$1" pin="1"/>
 <pinref part="GND4" gate="1" pin="GND"/>
-<wire x1="25.4" y1="50.8" x2="25.4" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="50.8" x2="-12.7" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R14" gate="G$1" pin="1"/>
@@ -4816,12 +4806,12 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </segment>
 <segment>
 <pinref part="R11" gate="G$1" pin="2"/>
-<wire x1="111.76" y1="63.5" x2="121.92" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="63.5" x2="121.92" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="81.28" x2="129.54" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="81.28" x2="129.54" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="R15" gate="G$1" pin="2"/>
-<wire x1="121.92" y1="63.5" x2="134.62" y2="63.5" width="0.1524" layer="91"/>
-<junction x="121.92" y="63.5"/>
-<label x="116.84" y="63.5" size="1.778" layer="95"/>
+<wire x1="129.54" y1="81.28" x2="142.24" y2="81.28" width="0.1524" layer="91"/>
+<junction x="129.54" y="81.28"/>
+<label x="124.46" y="81.28" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LCD_DC" class="0">
@@ -4833,11 +4823,11 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <segment>
 <pinref part="R12" gate="G$1" pin="2"/>
 <pinref part="R14" gate="G$1" pin="2"/>
-<wire x1="111.76" y1="60.96" x2="114.3" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="114.3" y1="60.96" x2="114.3" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="114.3" y1="60.96" x2="134.62" y2="60.96" width="0.1524" layer="91"/>
-<junction x="114.3" y="60.96"/>
-<label x="116.84" y="60.96" size="1.778" layer="95"/>
+<wire x1="119.38" y1="76.2" x2="121.92" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="76.2" x2="121.92" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="76.2" x2="142.24" y2="76.2" width="0.1524" layer="91"/>
+<junction x="121.92" y="76.2"/>
+<label x="124.46" y="76.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LCD_DIN" class="0">
@@ -4848,12 +4838,12 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </segment>
 <segment>
 <pinref part="R10" gate="G$1" pin="2"/>
-<wire x1="111.76" y1="66.04" x2="129.54" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="129.54" y1="66.04" x2="129.54" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="86.36" x2="137.16" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="86.36" x2="137.16" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="R16" gate="G$1" pin="2"/>
-<wire x1="129.54" y1="66.04" x2="134.62" y2="66.04" width="0.1524" layer="91"/>
-<junction x="129.54" y="66.04"/>
-<label x="116.84" y="66.04" size="1.778" layer="95"/>
+<wire x1="137.16" y1="86.36" x2="142.24" y2="86.36" width="0.1524" layer="91"/>
+<junction x="137.16" y="86.36"/>
+<label x="124.46" y="86.36" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LCD_CLK" class="0">
@@ -4864,24 +4854,26 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </segment>
 <segment>
 <pinref part="R13" gate="G$1" pin="2"/>
-<wire x1="25.4" y1="63.5" x2="25.4" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="63.5" x2="-12.7" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="R5" gate="G$1" pin="1"/>
-<wire x1="25.4" y1="68.58" x2="27.94" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="68.58" x2="10.16" y2="68.58" width="0.1524" layer="91"/>
-<junction x="25.4" y="68.58"/>
-<label x="10.16" y="68.58" size="1.778" layer="95"/>
+<wire x1="-12.7" y1="68.58" x2="-10.16" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="68.58" x2="-27.94" y2="68.58" width="0.1524" layer="91"/>
+<junction x="-12.7" y="68.58"/>
+<label x="-27.94" y="68.58" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="LCD_VCC" class="0">
+<net name="3V3" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="6"/>
 <wire x1="182.88" y1="50.8" x2="160.02" y2="50.8" width="0.1524" layer="91"/>
 <label x="170.18" y="50.8" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="3.3V"/>
-<label x="10.16" y="66.04" size="1.778" layer="95"/>
-<wire x1="38.1" y1="66.04" x2="10.16" y2="66.04" width="0.1524" layer="91"/>
+<label x="-27.94" y="66.04" size="1.778" layer="95"/>
+<wire x1="17.78" y1="66.04" x2="-27.94" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="66.04" x2="17.78" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="3V3"/>
+<wire x1="17.78" y1="81.28" x2="20.32" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LCD_LED" class="0">
@@ -4892,69 +4884,57 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </segment>
 <segment>
 <pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="27.94" y1="40.64" x2="10.16" y2="40.64" width="0.1524" layer="91"/>
-<label x="10.16" y="40.64" size="1.778" layer="95"/>
+<wire x1="-15.24" y1="40.64" x2="-27.94" y2="40.64" width="0.1524" layer="91"/>
+<label x="-27.94" y="40.64" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$1" class="0">
 <segment>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="D13"/>
 <pinref part="R5" gate="G$1" pin="2"/>
+<wire x1="0" y1="68.58" x2="15.24" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="68.58" x2="15.24" y2="86.36" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="D13"/>
+<wire x1="15.24" y1="86.36" x2="20.32" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
 <segment>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="D11"/>
 <pinref part="R10" gate="G$1" pin="1"/>
-<wire x1="101.6" y1="66.04" x2="71.12" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="D12"/>
+<wire x1="50.8" y1="86.36" x2="109.22" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="D10"/>
 <pinref part="R11" gate="G$1" pin="1"/>
-<wire x1="101.6" y1="63.5" x2="71.12" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="D11"/>
+<wire x1="50.8" y1="81.28" x2="109.22" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="0">
 <segment>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="D9"/>
 <pinref part="R12" gate="G$1" pin="1"/>
-<wire x1="101.6" y1="60.96" x2="71.12" y2="60.96" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="DPAD_UP" class="0">
-<segment>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="D8"/>
-<pinref part="DPAD" gate="Q$1" pin="UP"/>
-<wire x1="71.12" y1="58.42" x2="81.28" y2="58.42" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="DPAD_DOWN" class="0">
-<segment>
-<pinref part="DPAD" gate="Q$1" pin="DOWN"/>
-<wire x1="81.28" y1="43.18" x2="78.74" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="43.18" x2="78.74" y2="55.88" width="0.1524" layer="91"/>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="D7"/>
-<wire x1="78.74" y1="55.88" x2="71.12" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="D10"/>
+<wire x1="50.8" y1="76.2" x2="109.22" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DPAD_LEFT" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="LEFT"/>
-<wire x1="81.28" y1="50.8" x2="81.28" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="D6"/>
-<wire x1="81.28" y1="53.34" x2="71.12" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="D7"/>
+<wire x1="50.8" y1="60.96" x2="71.12" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="50.8" x2="71.12" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="50.8" x2="71.12" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DPAD_RIGHT" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="RIGHT"/>
 <wire x1="96.52" y1="50.8" x2="96.52" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="48.26" x2="76.2" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="48.26" x2="76.2" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="D5"/>
-<wire x1="76.2" y1="50.8" x2="71.12" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="48.26" x2="68.58" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="48.26" x2="68.58" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="D6"/>
+<wire x1="68.58" y1="55.88" x2="50.8" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DPAD_CENTER" class="0">
@@ -4962,16 +4942,37 @@ Standard 8-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="DPAD" gate="Q$1" pin="CENTER"/>
 <wire x1="96.52" y1="58.42" x2="99.06" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="58.42" x2="99.06" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="45.72" x2="73.66" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="45.72" x2="73.66" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="D4"/>
-<wire x1="73.66" y1="48.26" x2="71.12" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="45.72" x2="66.04" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="45.72" x2="66.04" y2="50.8" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="D5"/>
+<wire x1="66.04" y1="50.8" x2="50.8" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$11" class="0">
+<net name="5V" class="0">
 <segment>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="5.5V"/>
 <pinref part="R1" gate="G$1" pin="2"/>
+<wire x1="-5.08" y1="40.64" x2="12.7" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="40.64" x2="12.7" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="+5V"/>
+<wire x1="12.7" y1="30.48" x2="20.32" y2="30.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="DPAD" gate="Q$1" pin="DOWN"/>
+<wire x1="81.28" y1="43.18" x2="55.88" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="43.18" x2="55.88" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="U$5" gate="G$1" pin="D8"/>
+<wire x1="55.88" y1="66.04" x2="50.8" y2="66.04" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$6" class="0">
+<segment>
+<pinref part="U$5" gate="G$1" pin="D4"/>
+<wire x1="50.8" y1="45.72" x2="63.5" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="45.72" x2="63.5" y2="58.42" width="0.1524" layer="91"/>
+<pinref part="DPAD" gate="Q$1" pin="UP"/>
+<wire x1="63.5" y1="58.42" x2="81.28" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
