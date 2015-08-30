@@ -52,8 +52,8 @@ void loop()
 	b_r.update();
 	b_s.update();
 
-	if(b_u.fell()) selected--;
-	if(b_d.fell()) selected++;
+	if(b_u.rose()) selected--;
+	if(b_d.rose()) selected++;
 	if(selected > 4) selected = 0;
 	if(selected < 0) selected = 4;
 
