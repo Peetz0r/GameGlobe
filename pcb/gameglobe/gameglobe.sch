@@ -4767,7 +4767,7 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="DPAD" library="gamaral" deviceset="SKQU" device="CAA010"/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
-<part name="R1" library="resistor" deviceset="R-EU_" device="0411/15" value="220"/>
+<part name="R1" library="resistor" deviceset="R-EU_" device="0411/15" value="100"/>
 <part name="ARDUINO_NANO" library="arduino_nano" deviceset="ARDUINONANO" device=""/>
 <part name="S1" library="switch" deviceset="TL36YO" device=""/>
 </parts>
