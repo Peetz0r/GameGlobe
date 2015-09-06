@@ -2,6 +2,7 @@
 #include <Adafruit_PCD8544.h>
 #include <Bounce2.h>
 #include "splash_logo.h"
+#include <EEPROM.h>
 
 // these pin numbers are for the Pro Mini breadboard version
 // the Nano PCB version has different numbers
@@ -11,6 +12,10 @@
 #define PIN_U 4
 #define PIN_S 9
 
+#define EEPROM_SNAKE 0
+#define EEPROM_TETRIS 1
+#define EEPROM_FLAPPY_BIRD 2
+
 Adafruit_PCD8544 d = Adafruit_PCD8544(5, 0, 3);
 Bounce b_u = Bounce();
 Bounce b_d = Bounce();
@@ -18,34 +23,36 @@ Bounce b_l = Bounce();
 Bounce b_r = Bounce();
 Bounce b_s = Bounce();
 
-enum screens {
+enum game {
 	MENU,
 	SNAKE,
 	TETRIS,
 	FLAPPY_BIRD,
-	HIGHSCORES
+	HIGHSCORES,
+	GAME_OVER,
 };
 
-screens current_screen = MENU;
+game current_game = MENU;
+game previous_game;
 
 int8_t selected = 0;
 
-int8_t snake_length = 5;
-int8_t snake_x[255] = {10,11,12,13,14};
-int8_t snake_y[255] = {5,5,5,5,5};
+uint8_t snake_length = 5;
+uint8_t snake_pos[255] = {115,116,117,118,119};
 long snake_delay = 500;
 long snake_last_frame = 0;
 enum direction {
 	UP,
 	DOWN,
 	LEFT,
-	RIGHT
+	RIGHT,
 };
 direction snake_direction = LEFT;
 
+byte score;
 
-int8_t snake_fruit_x;
-int8_t snake_fruit_y;
+int8_t snake_food_x;
+int8_t snake_food_y;
 
 void menu_loop() {
 	d.clearDisplay();
@@ -69,102 +76,189 @@ void menu_loop() {
 	d.setCursor(11, 38);
 	d.print("...");
 
-	if(b_s.rose()) {
+	if(b_s.fell()) {
 		if(selected == 0) {
-			current_screen = SNAKE;
+			snake_length = 5;
+			snake_pos[0] = 115;
+			snake_pos[1] = 116;
+			snake_pos[2] = 117;
+			snake_pos[3] = 118;
+			snake_pos[4] = 119;
+			snake_delay = 500;
+			snake_last_frame = 0;
+			snake_direction = LEFT;
+
+			current_game = SNAKE;
 		} else if(selected == 1) {
-			current_screen = TETRIS;
+			current_game = TETRIS;
 		} else if(selected == 2) {
-			current_screen = FLAPPY_BIRD;
+			current_game = FLAPPY_BIRD;
 		} else if(selected == 3) {
-			current_screen = HIGHSCORES;
+			current_game = HIGHSCORES;
 		}
 	}
 	d.display();
+	delay(25);
 }
 
 void snake_loop () {
-	if(b_u.rose() && snake_direction != DOWN ) snake_direction = UP;
-	if(b_d.rose() && snake_direction != UP   ) snake_direction = DOWN;
-	if(b_l.rose() && snake_direction != RIGHT) snake_direction = LEFT;
-	if(b_r.rose() && snake_direction != LEFT ) snake_direction = RIGHT;
+	if(b_u.fell() && snake_direction != DOWN ) snake_direction = UP;
+	if(b_d.fell() && snake_direction != UP   ) snake_direction = DOWN;
+	if(b_l.fell() && snake_direction != RIGHT) snake_direction = LEFT;
+	if(b_r.fell() && snake_direction != LEFT ) snake_direction = RIGHT;
 
-	if(millis() - snake_last_frame > snake_delay) {
+	if((millis() - snake_last_frame) > snake_delay) {
 		d.clearDisplay();
 		snake_last_frame = millis();
 
-		for(int8_t i = snake_length; i >= 0; i--) {
-			snake_x[i+1] = snake_x[i];
-			snake_y[i+1] = snake_y[i];
+		for(uint8_t i = snake_length+1; i > 0; i--) {
+			snake_pos[i] = snake_pos[i-1];
 		}
+
+		int8_t tmp_snake_x;
+		int8_t tmp_snake_y;
 
 		switch(snake_direction) {
 			case UP:
-				snake_x[0] = snake_x[1];
-				snake_y[0] = snake_y[1]-1;
+				tmp_snake_x = (snake_pos[1]%21);
+				tmp_snake_y = (snake_pos[1]/21)-1;
 				break;
 			case DOWN:
-				snake_x[0] = snake_x[1];
-				snake_y[0] = snake_y[1]+1;
+				tmp_snake_x = (snake_pos[1]%21);
+				tmp_snake_y = (snake_pos[1]/21)+1;
 				break;
 			case LEFT:
-				snake_x[0] = snake_x[1]-1;
-				snake_y[0] = snake_y[1];
+				tmp_snake_x = (snake_pos[1]%21)-1;
+				tmp_snake_y = (snake_pos[1]/21);
 				break;
 			case RIGHT:
-				snake_x[0] = snake_x[1]+1;
-				snake_y[0] = snake_y[1];
+				tmp_snake_x = (snake_pos[1]%21)+1;
+				tmp_snake_y = (snake_pos[1]/21);
 				break;
 		}
 
-		if(snake_x[0] <  0) snake_x[0] = 20;
-		if(snake_x[0] > 20) snake_x[0] =  0;
-		if(snake_y[0] <  0) snake_y[0] = 11;
-		if(snake_y[0] > 11) snake_y[0] =  0;
+		if(tmp_snake_x <  0) tmp_snake_x = 20;
+		if(tmp_snake_x > 20) tmp_snake_x =  0;
+		if(tmp_snake_y <  0) tmp_snake_y = 11;
+		if(tmp_snake_y > 11) tmp_snake_y =  0;
 
-		if(snake_x[0] == snake_fruit_x && snake_y[0] == snake_fruit_y) {
+		if(tmp_snake_x == snake_food_x && tmp_snake_y == snake_food_y) {
 			snake_length++;
-			snake_plaats_fruit();
-			snake_delay *= 0.95;
-			snake_delay = 250;
+			snake_place_food();
+			snake_delay *= 0.98;
 		}
 
-		// fixme: game freezes after eating a number of fruits
-		// most likely out-of-memory issue because snake_x/y[] are huge
-		d.setCursor(0,0);
-		d.print(snake_length);
-		d.setCursor(20,0);
-		d.print(snake_delay);
+		snake_pos[0] = tmp_snake_y*21 + tmp_snake_x;
 
-		for(int8_t i = 0; i < snake_length; i++) {
-			d.fillRoundRect(snake_x[i]*4, snake_y[i]*4, 4, 4, 1, 1);
-			if(i > 0 && snake_x[0] == snake_x[i] && snake_y[0] == snake_y[i]) {
-				// todo, write proper game-over code.
-				asm volatile ("  jmp 0");
+		for(uint8_t i = 0; i < snake_length; i++) {
+			d.fillRoundRect((snake_pos[i]%21)*4, (snake_pos[i]/21)*4, 4, 4, 1, 1);
+			if(i > 0 && tmp_snake_x == snake_pos[i]%21 && tmp_snake_y == snake_pos[i]/21) {
+				score = snake_length;
+				previous_game = SNAKE;
+				current_game = GAME_OVER;
 			}
 		}
+		d.drawRoundRect(snake_food_x*4, snake_food_y*4, 4, 4, 2, 1);
 
-		d.fillRect(snake_fruit_x*4, snake_fruit_y*4, 4, 4, 1);
 		d.display();
 	}
 }
 
-void snake_plaats_fruit() {
+void snake_place_food() {
 	boolean done = false;
 	while(!done) {
-		snake_fruit_x = random(20);
-		snake_fruit_y = random(11);
+		snake_food_x = random(20);
+		snake_food_y = random(11);
 		done = true;
-		for(int8_t i = 0; i < snake_length; i++) {
-			if(snake_fruit_x == snake_x[i]) done = false;
-			if(snake_fruit_y == snake_y[i]) done = false;
+		for(uint8_t i = 0; i < snake_length; i++) {
+			if(snake_food_x == snake_pos[i]%21 && snake_food_y == snake_pos[i]/21) {
+				done = false;
+			}
 		}
 	}
 }
 
+void game_over_loop() {
+	d.clearDisplay();
+	d.setCursor(0, 0);
+	d.setTextSize(2);
+	d.print("GAME");
+	d.setCursor(36, 12);
+	d.print("OVER");
+
+	d.setTextSize(1);
+	d.setCursor(0, 30);
+	d.print("Your score");
+	d.setCursor(66, 30);
+	d.print(score);
+
+	int address;
+
+	switch(previous_game) {
+		case SNAKE: address = EEPROM_SNAKE; break;
+	}
+
+	byte highscore = EEPROM.read(address);
+	if(score > highscore || highscore == 255) {
+		highscore = score;
+		EEPROM.write(address, highscore);
+	}
+
+	d.setCursor(0, 40);
+	d.print("High score");
+	d.setCursor(66, 40);
+	d.print(highscore);
+
+	d.display();
+
+	if(b_s.fell()) current_game = MENU;
+
+	delay(25);
+}
+
+void highscores_loop() {
+	d.clearDisplay();
+
+	byte highscore;
+
+	d.setCursor(0, 0);
+	d.print("High scores:");
+
+	d.setCursor(0, 16);
+	d.print("Snake");
+
+	highscore = EEPROM.read(EEPROM_SNAKE);
+	if(highscore != 255) {
+		d.setCursor(66, 16);
+		d.print(highscore);
+	}
+
+	d.setCursor(0, 26);
+	d.print("Tetris");
+	highscore = EEPROM.read(EEPROM_TETRIS);
+	if(highscore != 255) {
+		d.setCursor(66, 26);
+		d.print(highscore);
+	}
+
+	d.setCursor(0, 36);
+	d.print("Flappy");
+	highscore = EEPROM.read(EEPROM_FLAPPY_BIRD);
+	if(highscore != 255) {
+		d.setCursor(66, 36);
+		d.print(highscore);
+	}
+
+	d.display();
+
+	if(b_s.fell()) current_game = MENU;
+
+	delay(25);
+}
+
 void setup() {
 	randomSeed(analogRead(A0));
-	snake_plaats_fruit();
+	snake_place_food();
 
 	pinMode(PIN_L, INPUT_PULLUP);
 	pinMode(PIN_R, INPUT_PULLUP);
@@ -193,19 +287,20 @@ void setup() {
 	delay(2000);
 }
 
-
 void loop() {
-	delay(25);
-
 	b_u.update();
 	b_d.update();
 	b_l.update();
 	b_r.update();
 	b_s.update();
 
-	if(current_screen == MENU) {
+	if(current_game == MENU) {
 		menu_loop();
-	} else if(current_screen == SNAKE) {
+	} else if(current_game == SNAKE) {
 		snake_loop();
+	} else if(current_game == HIGHSCORES) {
+		highscores_loop();
+	} else if(current_game == GAME_OVER) {
+		game_over_loop();
 	}
 }
