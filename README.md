@@ -10,6 +10,7 @@ Arduino Nano		|  $ 1,92	|     1		|  $1,92	|  http://www.aliexpress.com/item//199
 9V clip			|  $ 1,25	|    20		|  $0,06	|  http://www.aliexpress.com/item//32353434826.html
 D-Pad (SKQUCAA010)	|  $10,93	|    20		|  $0,55	|  http://www.aliexpress.com/item//32354178656.html
 Power switch		|  $ 3,50	|   100		|  $0,04	|  http://www.aliexpress.com/item//32390211893.html
+Speaker			|  $ 5,76	|    20		|  $0,29	|  http://www.aliexpress.com/item//2032185011.html
 Resistors		|    free	|  many		|   free	|  
 
 Total $6,13
