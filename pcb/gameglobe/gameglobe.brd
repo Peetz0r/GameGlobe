@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="125" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mil"/>
+<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
@@ -5394,7 +5394,7 @@ Display</text>
 <rectangle x1="71.345625" y1="48.20625" x2="76.045625" y2="48.25625" layer="200"/>
 <rectangle x1="71.995625" y1="48.25625" x2="75.395625" y2="48.30625" layer="200"/>
 <rectangle x1="72.995625" y1="48.30625" x2="74.395625" y2="48.35625" layer="200"/>
-<text x="81.915" y="40.005" size="2.1844" layer="22" font="vector" rot="MR0">Scouts 2, Globetrotters
+<text x="79.883" y="40.513" size="2.032" layer="22" font="vector" rot="MR0">Scouts 2, Globetrotters
 Scouting de Meridiaan
 Almere, NL</text>
 <text x="2.667" y="25.4" size="2.1844" layer="22" font="vector" rot="SMR270" align="bottom-center">GameGlobe</text>
