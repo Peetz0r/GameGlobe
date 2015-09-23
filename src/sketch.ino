@@ -1,25 +1,25 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 #include <Bounce2.h>
+#include <toneAC.h>
 #include <EEPROM.h>
 #include "splash_logo.h"
 #include "pitches.h"
 
-// these pin numbers are for the Pro Mini breadboard version
-// the Nano PCB version has different numbers
-#define PIN_L 8
-#define PIN_D 7
-#define PIN_R 6
-#define PIN_U 4
-#define PIN_S 9
+#define PIN_U 2
+#define PIN_S 3
+#define PIN_R 4
+#define PIN_L 5
+#define PIN_D 6
 
-#define PIN_SPKR 2
+#define PIN_LCD_DC  7
+#define PIN_LCD_RST 0
 
 #define EEPROM_SNAKE 0
 #define EEPROM_TETRIS 1
 #define EEPROM_FLAPPY_BIRD 2
 
-Adafruit_PCD8544 d = Adafruit_PCD8544(5, 0, 3);
+Adafruit_PCD8544 d = Adafruit_PCD8544(PIN_LCD_DC, 0, PIN_LCD_RST);
 
 Bounce b_u = Bounce();
 Bounce b_d = Bounce();
@@ -81,7 +81,7 @@ void menu_loop() {
 	d.print("...");
 
 	if(b_s.fell()) {
-		tone(PIN_SPKR, NOTE_A6, 25);
+		toneAC(NOTE_A6, 5, 25);
 		if(selected == 0) {
 			snake_length = 5;
 			snake_pos[0] = 115;
@@ -155,14 +155,14 @@ void snake_loop () {
 			snake_place_food();
 			snake_delay *= 0.98;
 
-			tone(PIN_SPKR, NOTE_E5, 50); delay(50);
-			tone(PIN_SPKR, NOTE_G5, 50); delay(50);
-			tone(PIN_SPKR, NOTE_E6, 50); delay(50);
-			tone(PIN_SPKR, NOTE_C6, 50); delay(50);
-			tone(PIN_SPKR, NOTE_D6, 50); delay(50);
-			tone(PIN_SPKR, NOTE_G6, 50); delay(50);
+			toneAC(NOTE_E5, 5, 50); delay(50);
+			toneAC(NOTE_G5, 5, 50); delay(50);
+			toneAC(NOTE_E6, 5, 50); delay(50);
+			toneAC(NOTE_C6, 5, 50); delay(50);
+			toneAC(NOTE_D6, 5, 50); delay(50);
+			toneAC(NOTE_G6, 5, 50); delay(50);
 		} else {
-			tone(PIN_SPKR, NOTE_A3, 5);
+			toneAC(NOTE_A3, 5, 5);
 		}
 
 		for(uint8_t i = 0; i < snake_length; i++) {
@@ -279,7 +279,7 @@ void setup() {
 
 	pinMode(PIN_SPKR, OUTPUT);
 
-	tone(PIN_SPKR, NOTE_A4, 50);
+	toneAC(NOTE_A4, 5, 50);
 
 	pinMode(PIN_L, INPUT_PULLUP);
 	pinMode(PIN_R, INPUT_PULLUP);
@@ -306,13 +306,13 @@ void setup() {
 	d.drawXBitmap(0,0, splash_logo, 84,48, 1);
 	d.display();
 
-	tone(PIN_SPKR, NOTE_A5, 100);
+	toneAC(NOTE_A5, 5, 100);
 	delay(300);
 
-	tone(PIN_SPKR, NOTE_A5, 50);
+	toneAC(NOTE_A5, 5, 50);
 	delay(100);
 
-	tone(PIN_SPKR, NOTE_A5, 200);
+	toneAC(NOTE_A5, 5, 200);
 	delay(1000);
 }
 
