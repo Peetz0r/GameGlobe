@@ -1,8 +1,9 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 #include <Bounce2.h>
-#include "splash_logo.h"
 #include <EEPROM.h>
+#include "splash_logo.h"
+#include "pitches.h"
 
 // these pin numbers are for the Pro Mini breadboard version
 // the Nano PCB version has different numbers
@@ -12,11 +13,14 @@
 #define PIN_U 4
 #define PIN_S 9
 
+#define PIN_SPKR 2
+
 #define EEPROM_SNAKE 0
 #define EEPROM_TETRIS 1
 #define EEPROM_FLAPPY_BIRD 2
 
 Adafruit_PCD8544 d = Adafruit_PCD8544(5, 0, 3);
+
 Bounce b_u = Bounce();
 Bounce b_d = Bounce();
 Bounce b_l = Bounce();
@@ -39,7 +43,7 @@ int8_t selected = 0;
 
 uint8_t snake_length = 5;
 uint8_t snake_pos[255] = {115,116,117,118,119};
-long snake_delay = 500;
+long snake_delay = 250;
 long snake_last_frame = 0;
 enum direction {
 	UP,
@@ -77,6 +81,7 @@ void menu_loop() {
 	d.print("...");
 
 	if(b_s.fell()) {
+		tone(PIN_SPKR, NOTE_A6, 25);
 		if(selected == 0) {
 			snake_length = 5;
 			snake_pos[0] = 115;
@@ -87,6 +92,7 @@ void menu_loop() {
 			snake_delay = 500;
 			snake_last_frame = 0;
 			snake_direction = LEFT;
+			snake_place_food();
 
 			current_game = SNAKE;
 		} else if(selected == 1) {
@@ -109,7 +115,6 @@ void snake_loop () {
 
 	if((millis() - snake_last_frame) > snake_delay) {
 		d.clearDisplay();
-		snake_last_frame = millis();
 
 		for(uint8_t i = snake_length+1; i > 0; i--) {
 			snake_pos[i] = snake_pos[i-1];
@@ -142,13 +147,23 @@ void snake_loop () {
 		if(tmp_snake_y <  0) tmp_snake_y = 11;
 		if(tmp_snake_y > 11) tmp_snake_y =  0;
 
+
+		snake_pos[0] = tmp_snake_y*21 + tmp_snake_x;
+
 		if(tmp_snake_x == snake_food_x && tmp_snake_y == snake_food_y) {
 			snake_length++;
 			snake_place_food();
 			snake_delay *= 0.98;
-		}
 
-		snake_pos[0] = tmp_snake_y*21 + tmp_snake_x;
+			tone(PIN_SPKR, NOTE_E5, 50); delay(50);
+			tone(PIN_SPKR, NOTE_G5, 50); delay(50);
+			tone(PIN_SPKR, NOTE_E6, 50); delay(50);
+			tone(PIN_SPKR, NOTE_C6, 50); delay(50);
+			tone(PIN_SPKR, NOTE_D6, 50); delay(50);
+			tone(PIN_SPKR, NOTE_G6, 50); delay(50);
+		} else {
+			tone(PIN_SPKR, NOTE_A3, 5);
+		}
 
 		for(uint8_t i = 0; i < snake_length; i++) {
 			d.fillRoundRect((snake_pos[i]%21)*4, (snake_pos[i]/21)*4, 4, 4, 1, 1);
@@ -159,8 +174,9 @@ void snake_loop () {
 			}
 		}
 		d.drawRoundRect(snake_food_x*4, snake_food_y*4, 4, 4, 2, 1);
-
 		d.display();
+
+		snake_last_frame = millis();
 	}
 }
 
@@ -176,6 +192,9 @@ void snake_place_food() {
 			}
 		}
 	}
+}
+
+void tetris_loop () {
 }
 
 void game_over_loop() {
@@ -226,7 +245,6 @@ void highscores_loop() {
 
 	d.setCursor(0, 16);
 	d.print("Snake");
-
 	highscore = EEPROM.read(EEPROM_SNAKE);
 	if(highscore != 255) {
 		d.setCursor(66, 16);
@@ -258,7 +276,10 @@ void highscores_loop() {
 
 void setup() {
 	randomSeed(analogRead(A0));
-	snake_place_food();
+
+	pinMode(PIN_SPKR, OUTPUT);
+
+	tone(PIN_SPKR, NOTE_A4, 50);
 
 	pinMode(PIN_L, INPUT_PULLUP);
 	pinMode(PIN_R, INPUT_PULLUP);
@@ -284,7 +305,15 @@ void setup() {
 	d.clearDisplay();
 	d.drawXBitmap(0,0, splash_logo, 84,48, 1);
 	d.display();
-	delay(2000);
+
+	tone(PIN_SPKR, NOTE_A5, 100);
+	delay(300);
+
+	tone(PIN_SPKR, NOTE_A5, 50);
+	delay(100);
+
+	tone(PIN_SPKR, NOTE_A5, 200);
+	delay(1000);
 }
 
 void loop() {
@@ -298,6 +327,8 @@ void loop() {
 		menu_loop();
 	} else if(current_game == SNAKE) {
 		snake_loop();
+	} else if(current_game == SNAKE) {
+		tetris_loop();
 	} else if(current_game == HIGHSCORES) {
 		highscores_loop();
 	} else if(current_game == GAME_OVER) {
