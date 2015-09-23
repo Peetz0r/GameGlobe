@@ -7,3 +7,6 @@
 [submodule "lib/Adafruit-PCD8544-Nokia-5110-LCD-library"]
 	path = lib/Adafruit-PCD8544-Nokia-5110-LCD-library
 	url = git@github.com:adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library.git
+[submodule "lib/arduino-toneac"]
+	path = lib/arduino-toneac
+	url = https://bitbucket.org/teckel12/arduino-toneac.git
