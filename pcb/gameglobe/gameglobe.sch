@@ -5796,28 +5796,28 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <wire x1="27.94" y1="5.08" x2="27.94" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$7" class="0">
+<net name="TX" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D1/TX"/>
-<wire x1="132.08" y1="25.4" x2="132.08" y2="7.62" width="0.1524" layer="91"/>
-<wire x1="132.08" y1="7.62" x2="43.18" y2="7.62" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="25.4" x2="132.08" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="10.16" x2="43.18" y2="10.16" width="0.1524" layer="91"/>
 <pinref part="JP2" gate="G$1" pin="4"/>
-<wire x1="43.18" y1="7.62" x2="43.18" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="10.16" x2="43.18" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="55.88" x2="22.86" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$8" class="0">
+<net name="RX" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D0/RX"/>
 <wire x1="132.08" y1="30.48" x2="134.62" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="30.48" x2="134.62" y2="10.16" width="0.1524" layer="91"/>
-<wire x1="134.62" y1="10.16" x2="45.72" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="30.48" x2="134.62" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="12.7" x2="45.72" y2="12.7" width="0.1524" layer="91"/>
 <pinref part="JP2" gate="G$1" pin="5"/>
-<wire x1="45.72" y1="10.16" x2="45.72" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="12.7" x2="45.72" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="58.42" x2="22.86" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$11" class="0">
+<net name="A0" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="A0"/>
 <wire x1="101.6" y1="45.72" x2="48.26" y2="45.72" width="0.1524" layer="91"/>
@@ -5826,17 +5826,16 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <wire x1="22.86" y1="60.96" x2="48.26" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$12" class="0">
+<net name="A1" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="A1"/>
-<wire x1="101.6" y1="50.8" x2="101.6" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="101.6" y1="48.26" x2="50.8" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="48.26" x2="50.8" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="50.8" x2="50.8" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="50.8" x2="50.8" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="JP2" gate="G$1" pin="7"/>
 <wire x1="50.8" y1="63.5" x2="22.86" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="A2" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="A2"/>
 <wire x1="101.6" y1="55.88" x2="53.34" y2="55.88" width="0.1524" layer="91"/>
@@ -5845,7 +5844,7 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <wire x1="22.86" y1="66.04" x2="53.34" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$14" class="0">
+<net name="A3" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="A3"/>
 <wire x1="101.6" y1="60.96" x2="55.88" y2="60.96" width="0.1524" layer="91"/>
@@ -5854,7 +5853,7 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <wire x1="55.88" y1="68.58" x2="22.86" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$15" class="0">
+<net name="A4" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="A4"/>
 <wire x1="101.6" y1="66.04" x2="58.42" y2="66.04" width="0.1524" layer="91"/>
@@ -5863,7 +5862,7 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <wire x1="58.42" y1="71.12" x2="22.86" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$16" class="0">
+<net name="A5" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="A5"/>
 <wire x1="101.6" y1="71.12" x2="60.96" y2="71.12" width="0.1524" layer="91"/>
@@ -5872,7 +5871,7 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <wire x1="22.86" y1="73.66" x2="60.96" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$17" class="0">
+<net name="A6" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="A6"/>
 <wire x1="101.6" y1="76.2" x2="99.06" y2="76.2" width="0.1524" layer="91"/>
@@ -5883,7 +5882,7 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <wire x1="63.5" y1="76.2" x2="22.86" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$18" class="0">
+<net name="A7" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="A7"/>
 <wire x1="66.04" y1="76.2" x2="66.04" y2="78.74" width="0.1524" layer="91"/>
