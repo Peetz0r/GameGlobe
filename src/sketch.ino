@@ -8,8 +8,8 @@
 
 #define PIN_U 2
 #define PIN_S 3
-#define PIN_R 4
-#define PIN_L 5
+#define PIN_L 4
+#define PIN_R 5
 #define PIN_D 6
 
 #define PIN_LCD_DC  7
