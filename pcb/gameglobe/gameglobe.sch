@@ -5622,64 +5622,6 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <busses>
 </busses>
 <nets>
-<net name="GND" class="0">
-<segment>
-<pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="132.08" y1="40.64" x2="152.4" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="152.4" y1="40.64" x2="152.4" y2="5.08" width="0.1524" layer="91"/>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="GND2" gate="1" pin="GND"/>
-<wire x1="15.24" y1="30.48" x2="27.94" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="27.94" y1="30.48" x2="86.36" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="30.48" x2="101.6" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="30.48" x2="86.36" y2="5.08" width="0.1524" layer="91"/>
-<junction x="86.36" y="30.48"/>
-<pinref part="ARDUINO_NANO" gate="G$1" pin="GND1"/>
-<wire x1="27.94" y1="30.48" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
-<junction x="27.94" y="30.48"/>
-<pinref part="R13" gate="G$1" pin="1"/>
-<wire x1="86.36" y1="78.74" x2="86.36" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="BATTERY" gate="G$1" pin="-"/>
-<pinref part="JP2" gate="G$1" pin="1"/>
-<wire x1="22.86" y1="48.26" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="G$1" pin="14"/>
-<wire x1="22.86" y1="81.28" x2="27.94" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="27.94" y1="81.28" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
-<junction x="27.94" y="48.26"/>
-</segment>
-<segment>
-<wire x1="198.12" y1="33.02" x2="198.12" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="G$1" pin="8"/>
-<wire x1="215.9" y1="17.78" x2="198.12" y2="17.78" width="0.1524" layer="91"/>
-<label x="203.2" y="17.78" size="1.778" layer="95"/>
-<pinref part="JP1" gate="G$1" pin="2"/>
-<wire x1="215.9" y1="33.02" x2="198.12" y2="33.02" width="0.1524" layer="91"/>
-<label x="203.2" y="33.02" size="1.778" layer="95"/>
-<junction x="198.12" y="33.02"/>
-<pinref part="GND3" gate="1" pin="GND"/>
-<wire x1="198.12" y1="17.78" x2="198.12" y2="5.08" width="0.1524" layer="91"/>
-<junction x="198.12" y="17.78"/>
-</segment>
-<segment>
-<pinref part="R14" gate="G$1" pin="1"/>
-<pinref part="GND5" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="R15" gate="G$1" pin="1"/>
-<pinref part="GND6" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="R16" gate="G$1" pin="1"/>
-<pinref part="GND7" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="DPAD" gate="Q$1" pin="COMMON"/>
-<pinref part="GND8" gate="1" pin="GND"/>
-<wire x1="182.88" y1="5.08" x2="182.88" y2="53.34" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="LCD_RST" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="1"/>
@@ -5991,6 +5933,64 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <wire x1="154.94" y1="86.36" x2="154.94" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D8"/>
 <wire x1="154.94" y1="76.2" x2="132.08" y2="76.2" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="GND" class="0">
+<segment>
+<pinref part="GND2" gate="1" pin="GND"/>
+<wire x1="15.24" y1="30.48" x2="27.94" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="30.48" x2="86.36" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="30.48" x2="101.6" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="30.48" x2="86.36" y2="5.08" width="0.1524" layer="91"/>
+<junction x="86.36" y="30.48"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="GND1"/>
+<wire x1="27.94" y1="30.48" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
+<junction x="27.94" y="30.48"/>
+<pinref part="R13" gate="G$1" pin="1"/>
+<wire x1="86.36" y1="78.74" x2="86.36" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="BATTERY" gate="G$1" pin="-"/>
+<pinref part="JP2" gate="G$1" pin="1"/>
+<wire x1="22.86" y1="48.26" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="G$1" pin="14"/>
+<wire x1="22.86" y1="81.28" x2="27.94" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="81.28" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
+<junction x="27.94" y="48.26"/>
+</segment>
+<segment>
+<pinref part="GND1" gate="1" pin="GND"/>
+<wire x1="132.08" y1="40.64" x2="152.4" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="40.64" x2="152.4" y2="5.08" width="0.1524" layer="91"/>
+<pinref part="ARDUINO_NANO" gate="G$1" pin="GND"/>
+</segment>
+<segment>
+<wire x1="198.12" y1="33.02" x2="198.12" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="G$1" pin="8"/>
+<wire x1="215.9" y1="17.78" x2="198.12" y2="17.78" width="0.1524" layer="91"/>
+<label x="203.2" y="17.78" size="1.778" layer="95"/>
+<pinref part="JP1" gate="G$1" pin="2"/>
+<wire x1="215.9" y1="33.02" x2="198.12" y2="33.02" width="0.1524" layer="91"/>
+<label x="203.2" y="33.02" size="1.778" layer="95"/>
+<junction x="198.12" y="33.02"/>
+<pinref part="GND3" gate="1" pin="GND"/>
+<wire x1="198.12" y1="17.78" x2="198.12" y2="5.08" width="0.1524" layer="91"/>
+<junction x="198.12" y="17.78"/>
+</segment>
+<segment>
+<pinref part="R14" gate="G$1" pin="1"/>
+<pinref part="GND5" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="R15" gate="G$1" pin="1"/>
+<pinref part="GND6" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="R16" gate="G$1" pin="1"/>
+<pinref part="GND7" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="DPAD" gate="Q$1" pin="COMMON"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="182.88" y1="5.08" x2="182.88" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
