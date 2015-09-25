@@ -5610,8 +5610,8 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <instance part="GND5" gate="1" x="210.82" y="63.5"/>
 <instance part="GND6" gate="1" x="218.44" y="63.5"/>
 <instance part="GND7" gate="1" x="226.06" y="63.5"/>
-<instance part="DPAD" gate="Q$1" x="175.26" y="60.96"/>
-<instance part="GND8" gate="1" x="182.88" y="2.54"/>
+<instance part="DPAD" gate="Q$1" x="167.64" y="60.96" rot="MR180"/>
+<instance part="GND8" gate="1" x="185.42" y="2.54"/>
 <instance part="R1" gate="G$1" x="35.56" y="40.64"/>
 <instance part="ARDUINO_NANO" gate="G$1" x="127" y="22.86" rot="R180"/>
 <instance part="S1" gate="BEF1" x="93.98" y="22.86" rot="R270"/>
@@ -5725,9 +5725,9 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <net name="DPAD_RIGHT" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="RIGHT"/>
-<wire x1="182.88" y1="60.96" x2="182.88" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="55.88" x2="149.86" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="55.88" x2="149.86" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="60.96" x2="175.26" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="63.5" x2="149.86" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="63.5" x2="149.86" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D5"/>
 <wire x1="149.86" y1="60.96" x2="132.08" y2="60.96" width="0.1524" layer="91"/>
 <label x="132.08" y="60.96" size="1.778" layer="95"/>
@@ -5736,9 +5736,8 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <net name="DPAD_CENTER" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="CENTER"/>
-<wire x1="182.88" y1="68.58" x2="185.42" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="185.42" y1="68.58" x2="185.42" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="185.42" y1="50.8" x2="132.08" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="53.34" x2="175.26" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="50.8" x2="132.08" y2="50.8" width="0.1524" layer="91"/>
 <label x="132.08" y="50.8" size="1.778" layer="95"/>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D3"/>
 </segment>
@@ -5757,21 +5756,21 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <net name="DPAD_DOWN" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="DOWN"/>
-<wire x1="167.64" y1="53.34" x2="154.94" y2="53.34" width="0.1524" layer="91"/>
 <label x="132.08" y="66.04" size="1.778" layer="95"/>
-<wire x1="154.94" y1="53.34" x2="154.94" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D6"/>
 <wire x1="154.94" y1="66.04" x2="132.08" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="68.58" x2="154.94" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="68.58" x2="154.94" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DPAD_UP" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="UP"/>
-<wire x1="152.4" y1="68.58" x2="167.64" y2="68.58" width="0.1524" layer="91"/>
 <label x="132.08" y="45.72" size="1.778" layer="95"/>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D2"/>
-<wire x1="132.08" y1="45.72" x2="152.4" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="152.4" y1="45.72" x2="152.4" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="45.72" x2="154.94" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="53.34" x2="154.94" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="53.34" x2="154.94" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -5983,19 +5982,18 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="COMMON"/>
 <pinref part="GND8" gate="1" pin="GND"/>
-<wire x1="182.88" y1="5.08" x2="182.88" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="5.08" x2="185.42" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="68.58" x2="175.26" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DPAD_LEFT" class="0">
 <segment>
 <pinref part="DPAD" gate="Q$1" pin="LEFT"/>
-<wire x1="167.64" y1="60.96" x2="157.48" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="157.48" y1="60.96" x2="157.48" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="157.48" y1="58.42" x2="147.32" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="147.32" y1="58.42" x2="147.32" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D4"/>
-<wire x1="147.32" y1="55.88" x2="132.08" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="55.88" x2="132.08" y2="55.88" width="0.1524" layer="91"/>
 <label x="132.08" y="55.88" size="1.778" layer="95"/>
+<wire x1="160.02" y1="60.96" x2="154.94" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="60.96" x2="154.94" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
