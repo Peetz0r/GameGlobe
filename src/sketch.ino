@@ -13,13 +13,16 @@
 #define PIN_D 6
 
 #define PIN_LCD_DC  7
-#define PIN_LCD_RST 0
+#define PIN_LCD_RST 8
 
-#define EEPROM_SNAKE 0
-#define EEPROM_TETRIS 1
-#define EEPROM_FLAPPY_BIRD 2
+#define EEPROM_VOLUME 10
+#define EEPROM_SNAKE 110
+#define EEPROM_TETRIS 120
+#define EEPROM_FLAPPY_BIRD 130
 
-Adafruit_PCD8544 d = Adafruit_PCD8544(PIN_LCD_DC, 0, PIN_LCD_RST);
+uint8_t volume = 5;
+
+Adafruit_PCD8544 d = Adafruit_PCD8544(PIN_LCD_DC, -1, PIN_LCD_RST);
 
 Bounce b_u = Bounce();
 Bounce b_d = Bounce();
@@ -78,10 +81,13 @@ void menu_loop() {
 	d.setCursor(11, 29);
 	d.print("Highscores");
 	d.setCursor(11, 38);
-	d.print("...");
+
+	d.print("Volume");
+	d.drawRect(52,37,         24,9, 1);
+	d.fillRect(54,39, (volume*2),5, 1);
 
 	if(b_s.fell()) {
-		toneAC(NOTE_A6, 5, 25);
+		toneAC(NOTE_A6, volume, 25);
 		if(selected == 0) {
 			snake_length = 5;
 			snake_pos[0] = 115;
@@ -103,6 +109,20 @@ void menu_loop() {
 			current_game = HIGHSCORES;
 		}
 	}
+
+	if(selected== 4) {
+		if(b_l.fell()) {
+			if(volume > 0) volume--;
+			toneAC(NOTE_A6, volume, 25);
+			EEPROM.write(EEPROM_VOLUME, volume);
+		}
+		if(b_r.fell()) {
+			if(volume < 10) volume++;
+			toneAC(NOTE_A6, volume, 25);
+			EEPROM.write(EEPROM_VOLUME, volume);
+		}
+	}
+
 	d.display();
 	delay(25);
 }
@@ -155,14 +175,14 @@ void snake_loop () {
 			snake_place_food();
 			snake_delay *= 0.98;
 
-			toneAC(NOTE_E5, 5, 50); delay(50);
-			toneAC(NOTE_G5, 5, 50); delay(50);
-			toneAC(NOTE_E6, 5, 50); delay(50);
-			toneAC(NOTE_C6, 5, 50); delay(50);
-			toneAC(NOTE_D6, 5, 50); delay(50);
-			toneAC(NOTE_G6, 5, 50); delay(50);
+			toneAC(NOTE_E5, volume, 50); delay(50);
+			toneAC(NOTE_G5, volume, 50); delay(50);
+			toneAC(NOTE_E6, volume, 50); delay(50);
+			toneAC(NOTE_C6, volume, 50); delay(50);
+			toneAC(NOTE_D6, volume, 50); delay(50);
+			toneAC(NOTE_G6, volume, 50); delay(50);
 		} else {
-			toneAC(NOTE_A3, 5, 5);
+			toneAC(NOTE_A3, volume, 5);
 		}
 
 		for(uint8_t i = 0; i < snake_length; i++) {
@@ -238,7 +258,7 @@ void game_over_loop() {
 void highscores_loop() {
 	d.clearDisplay();
 
-	byte highscore;
+	uint8_t highscore;
 
 	d.setCursor(0, 0);
 	d.print("High scores:");
@@ -277,9 +297,12 @@ void highscores_loop() {
 void setup() {
 	randomSeed(analogRead(A0));
 
-	pinMode(PIN_SPKR, OUTPUT);
+	volume = EEPROM.read(EEPROM_VOLUME);
+	if(volume >10) {
+		volume = 5;
+	}
 
-	toneAC(NOTE_A4, 5, 50);
+	toneAC(NOTE_A4, volume, 50);
 
 	pinMode(PIN_L, INPUT_PULLUP);
 	pinMode(PIN_R, INPUT_PULLUP);
@@ -306,13 +329,13 @@ void setup() {
 	d.drawXBitmap(0,0, splash_logo, 84,48, 1);
 	d.display();
 
-	toneAC(NOTE_A5, 5, 100);
+	toneAC(NOTE_A5, volume, 100);
 	delay(300);
 
-	toneAC(NOTE_A5, 5, 50);
+	toneAC(NOTE_A5, volume, 50);
 	delay(100);
 
-	toneAC(NOTE_A5, 5, 200);
+	toneAC(NOTE_A5, volume, 200);
 	delay(1000);
 }
 
