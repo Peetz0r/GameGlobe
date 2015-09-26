@@ -5566,14 +5566,14 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 </class>
 </classes>
 <parts>
-<part name="R5" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
-<part name="R10" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
-<part name="R11" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
-<part name="R12" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
-<part name="R13" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
-<part name="R14" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
-<part name="R15" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
-<part name="R16" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
+<part name="R8" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
+<part name="R6" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
+<part name="R2" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
+<part name="R4" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
+<part name="R3" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
+<part name="R7" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
+<part name="R5" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
+<part name="R9" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="JP1" library="SparkFun-Connectors" deviceset="M08" device="" value="LCD"/>
@@ -5595,14 +5595,14 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <plain>
 </plain>
 <instances>
-<instance part="R5" gate="G$1" x="93.98" y="96.52"/>
-<instance part="R10" gate="G$1" x="203.2" y="91.44"/>
-<instance part="R11" gate="G$1" x="203.2" y="86.36"/>
-<instance part="R12" gate="G$1" x="203.2" y="81.28"/>
-<instance part="R13" gate="G$1" x="86.36" y="83.82" rot="R90"/>
-<instance part="R14" gate="G$1" x="210.82" y="71.12" rot="R90"/>
-<instance part="R15" gate="G$1" x="218.44" y="71.12" rot="R90"/>
-<instance part="R16" gate="G$1" x="226.06" y="71.12" rot="R90"/>
+<instance part="R8" gate="G$1" x="93.98" y="96.52"/>
+<instance part="R6" gate="G$1" x="203.2" y="91.44"/>
+<instance part="R2" gate="G$1" x="203.2" y="86.36"/>
+<instance part="R4" gate="G$1" x="203.2" y="81.28"/>
+<instance part="R3" gate="G$1" x="86.36" y="83.82" rot="R90"/>
+<instance part="R7" gate="G$1" x="210.82" y="71.12" rot="R90"/>
+<instance part="R5" gate="G$1" x="218.44" y="71.12" rot="R90"/>
+<instance part="R9" gate="G$1" x="226.06" y="71.12" rot="R90"/>
 <instance part="GND1" gate="1" x="152.4" y="2.54"/>
 <instance part="GND2" gate="1" x="86.36" y="2.54"/>
 <instance part="JP1" gate="G$1" x="220.98" y="27.94" rot="R180"/>
@@ -5629,10 +5629,10 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <label x="203.2" y="35.56" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R11" gate="G$1" pin="2"/>
+<pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="208.28" y1="86.36" x2="218.44" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="218.44" y1="86.36" x2="218.44" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="R15" gate="G$1" pin="2"/>
+<pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="218.44" y1="86.36" x2="231.14" y2="86.36" width="0.1524" layer="91"/>
 <junction x="218.44" y="86.36"/>
 <label x="213.36" y="86.36" size="1.778" layer="95"/>
@@ -5645,8 +5645,8 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <label x="203.2" y="30.48" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R12" gate="G$1" pin="2"/>
-<pinref part="R14" gate="G$1" pin="2"/>
+<pinref part="R4" gate="G$1" pin="2"/>
+<pinref part="R7" gate="G$1" pin="2"/>
 <wire x1="208.28" y1="81.28" x2="210.82" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="81.28" x2="210.82" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="81.28" x2="231.14" y2="81.28" width="0.1524" layer="91"/>
@@ -5661,10 +5661,10 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <label x="203.2" y="27.94" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R10" gate="G$1" pin="2"/>
+<pinref part="R6" gate="G$1" pin="2"/>
 <wire x1="208.28" y1="91.44" x2="226.06" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="91.44" x2="226.06" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="R16" gate="G$1" pin="2"/>
+<pinref part="R9" gate="G$1" pin="2"/>
 <wire x1="226.06" y1="91.44" x2="231.14" y2="91.44" width="0.1524" layer="91"/>
 <junction x="226.06" y="91.44"/>
 <label x="213.36" y="91.44" size="1.778" layer="95"/>
@@ -5677,9 +5677,9 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <label x="203.2" y="25.4" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R13" gate="G$1" pin="2"/>
+<pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="86.36" y1="88.9" x2="86.36" y2="96.52" width="0.1524" layer="91"/>
-<pinref part="R5" gate="G$1" pin="1"/>
+<pinref part="R8" gate="G$1" pin="1"/>
 <wire x1="86.36" y1="96.52" x2="88.9" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="96.52" x2="12.7" y2="96.52" width="0.1524" layer="91"/>
 <junction x="86.36" y="96.52"/>
@@ -5717,7 +5717,7 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 </net>
 <net name="N$1" class="0">
 <segment>
-<pinref part="R5" gate="G$1" pin="2"/>
+<pinref part="R8" gate="G$1" pin="2"/>
 <wire x1="99.06" y1="96.52" x2="101.6" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D13"/>
 </segment>
@@ -5905,7 +5905,7 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <net name="N$20" class="0">
 <segment>
 <wire x1="160.02" y1="71.12" x2="160.02" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="R12" gate="G$1" pin="1"/>
+<pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="160.02" y1="81.28" x2="198.12" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D7"/>
 <wire x1="132.08" y1="71.12" x2="160.02" y2="71.12" width="0.1524" layer="91"/>
@@ -5914,13 +5914,13 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <net name="N$2" class="0">
 <segment>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D11"/>
-<pinref part="R10" gate="G$1" pin="1"/>
+<pinref part="R6" gate="G$1" pin="1"/>
 <wire x1="132.08" y1="91.44" x2="198.12" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="R11" gate="G$1" pin="1"/>
+<pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="198.12" y1="86.36" x2="154.94" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="86.36" x2="154.94" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO" gate="G$1" pin="D8"/>
@@ -5938,7 +5938,7 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <pinref part="ARDUINO_NANO" gate="G$1" pin="GND1"/>
 <wire x1="27.94" y1="30.48" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
 <junction x="27.94" y="30.48"/>
-<pinref part="R13" gate="G$1" pin="1"/>
+<pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="86.36" y1="78.74" x2="86.36" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="BATTERY" gate="G$1" pin="-"/>
 <pinref part="JP2" gate="G$1" pin="1"/>
@@ -5968,15 +5968,15 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 <junction x="198.12" y="17.78"/>
 </segment>
 <segment>
-<pinref part="R14" gate="G$1" pin="1"/>
+<pinref part="R7" gate="G$1" pin="1"/>
 <pinref part="GND5" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="R15" gate="G$1" pin="1"/>
+<pinref part="R5" gate="G$1" pin="1"/>
 <pinref part="GND6" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="R16" gate="G$1" pin="1"/>
+<pinref part="R9" gate="G$1" pin="1"/>
 <pinref part="GND7" gate="1" pin="GND"/>
 </segment>
 <segment>
