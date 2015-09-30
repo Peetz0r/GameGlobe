@@ -20,8 +20,6 @@
 #define EEPROM_TETRIS 120
 #define EEPROM_FLAPPY_BIRD 130
 
-uint8_t volume = 5;
-
 Adafruit_PCD8544 d = Adafruit_PCD8544(PIN_LCD_DC, -1, PIN_LCD_RST);
 
 Bounce b_u = Bounce();
@@ -43,10 +41,13 @@ game current_game = MENU;
 game previous_game;
 
 int8_t selected = 0;
+int8_t volume = 5;
+int8_t need_write_volume = 0;
 
 uint8_t snake_length = 5;
+uint8_t snake_pushed = 0;
 uint8_t snake_pos[255] = {115,116,117,118,119};
-long snake_delay = 250;
+long snake_delay;
 long snake_last_frame = 0;
 enum direction {
 	UP,
@@ -55,6 +56,7 @@ enum direction {
 	RIGHT,
 };
 direction snake_direction = LEFT;
+direction snake_direction_old = LEFT;
 
 byte score;
 
@@ -95,7 +97,8 @@ void menu_loop() {
 			snake_pos[2] = 117;
 			snake_pos[3] = 118;
 			snake_pos[4] = 119;
-			snake_delay = 500;
+			snake_delay = 350;
+			snake_pushed = 0;
 			snake_last_frame = 0;
 			snake_direction = LEFT;
 			snake_place_food();
@@ -111,16 +114,18 @@ void menu_loop() {
 	}
 
 	if(selected== 4) {
+		need_write_volume = 1;
 		if(b_l.fell()) {
 			if(volume > 0) volume--;
 			toneAC(NOTE_A6, volume, 25);
-			EEPROM.write(EEPROM_VOLUME, volume);
 		}
 		if(b_r.fell()) {
 			if(volume < 10) volume++;
 			toneAC(NOTE_A6, volume, 25);
-			EEPROM.write(EEPROM_VOLUME, volume);
 		}
+	} else if(need_write_volume == 1) {
+		EEPROM.write(EEPROM_VOLUME, volume);
+		need_write_volume = 0;
 	}
 
 	d.display();
@@ -128,12 +133,13 @@ void menu_loop() {
 }
 
 void snake_loop () {
-	if(b_u.fell() && snake_direction != DOWN ) snake_direction = UP;
-	if(b_d.fell() && snake_direction != UP   ) snake_direction = DOWN;
-	if(b_l.fell() && snake_direction != RIGHT) snake_direction = LEFT;
-	if(b_r.fell() && snake_direction != LEFT ) snake_direction = RIGHT;
+	if(b_u.fell() && snake_direction_old != DOWN ) snake_direction = UP;
+	if(b_d.fell() && snake_direction_old != UP   ) snake_direction = DOWN;
+	if(b_l.fell() && snake_direction_old != RIGHT) snake_direction = LEFT;
+	if(b_r.fell() && snake_direction_old != LEFT ) snake_direction = RIGHT;
 
 	if((millis() - snake_last_frame) > snake_delay) {
+		snake_direction_old = snake_direction;
 		d.clearDisplay();
 
 		for(uint8_t i = snake_length+1; i > 0; i--) {
@@ -173,7 +179,7 @@ void snake_loop () {
 		if(tmp_snake_x == snake_food_x && tmp_snake_y == snake_food_y) {
 			snake_length++;
 			snake_place_food();
-			snake_delay *= 0.98;
+			snake_delay *= 0.95;
 
 			toneAC(NOTE_E5, volume, 50); delay(50);
 			toneAC(NOTE_G5, volume, 50); delay(50);
