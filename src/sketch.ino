@@ -43,10 +43,13 @@ game previous_game;
 int8_t selected = 0;
 int8_t volume = 5;
 int8_t need_write_volume = 0;
+uint8_t score;
 
-uint8_t snake_length = 5;
-uint8_t snake_pushed = 0;
-uint8_t snake_pos[255] = {115,116,117,118,119};
+uint8_t snake_length;
+uint8_t snake_pushed;
+uint8_t snake_pos[255];
+int8_t snake_food_x;
+int8_t snake_food_y;
 long snake_delay;
 long snake_last_frame = 0;
 enum direction {
@@ -58,10 +61,7 @@ enum direction {
 direction snake_direction = LEFT;
 direction snake_direction_old = LEFT;
 
-byte score;
-
-int8_t snake_food_x;
-int8_t snake_food_y;
+int8_t flappy_bird_pipes[3];
 
 void menu_loop() {
 	d.clearDisplay();
@@ -92,6 +92,7 @@ void menu_loop() {
 		toneAC(NOTE_A6, volume, 25);
 		if(selected == 0) {
 			snake_length = 5;
+			snake_pushed = 0;
 			snake_pos[0] = 115;
 			snake_pos[1] = 116;
 			snake_pos[2] = 117;
@@ -107,20 +108,29 @@ void menu_loop() {
 		} else if(selected == 1) {
 			current_game = TETRIS;
 		} else if(selected == 2) {
+			flappy_bird_pipes[0] = 0;
+			flappy_bird_pipes[1] = 0;
+			flappy_bird_pipes[2] = 0;
+
 			current_game = FLAPPY_BIRD;
 		} else if(selected == 3) {
 			current_game = HIGHSCORES;
 		}
 	}
 
-	if(selected== 4) {
-		need_write_volume = 1;
+	if(selected == 4) {
 		if(b_l.fell()) {
-			if(volume > 0) volume--;
+			if(volume > 0) {
+				volume--;
+				need_write_volume = 1;
+			}
 			toneAC(NOTE_A6, volume, 25);
 		}
 		if(b_r.fell()) {
-			if(volume < 10) volume++;
+			if(volume < 10) {
+				volume++;
+				need_write_volume = 1;
+			}
 			toneAC(NOTE_A6, volume, 25);
 		}
 	} else if(need_write_volume == 1) {
@@ -221,6 +231,10 @@ void snake_place_food() {
 }
 
 void tetris_loop () {
+}
+
+void flappy_bird_loop () {
+
 }
 
 void game_over_loop() {
@@ -356,8 +370,10 @@ void loop() {
 		menu_loop();
 	} else if(current_game == SNAKE) {
 		snake_loop();
-	} else if(current_game == SNAKE) {
+	} else if(current_game == TETRIS) {
 		tetris_loop();
+	} else if(current_game == FLAPPY_BIRD) {
+		flappy_bird_loop();
 	} else if(current_game == HIGHSCORES) {
 		highscores_loop();
 	} else if(current_game == GAME_OVER) {
