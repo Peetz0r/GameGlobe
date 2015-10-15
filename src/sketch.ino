@@ -18,7 +18,7 @@
 #define EEPROM_VOLUME 10
 #define EEPROM_SNAKE 110
 #define EEPROM_TETRIS 120
-#define EEPROM_FLAPPY_BIRD 130
+#define EEPROM_FLAPPY 130
 
 Adafruit_PCD8544 d = Adafruit_PCD8544(PIN_LCD_DC, -1, PIN_LCD_RST);
 
@@ -32,7 +32,7 @@ enum game {
 	MENU,
 	SNAKE,
 	TETRIS,
-	FLAPPY_BIRD,
+	FLAPPY,
 	HIGHSCORES,
 	GAME_OVER,
 };
@@ -61,7 +61,12 @@ enum direction {
 direction snake_direction = LEFT;
 direction snake_direction_old = LEFT;
 
-int8_t flappy_bird_pipes[3];
+uint8_t flappy_x;
+float flappy_y;
+float flappy_y_speed;
+uint8_t flappy_counter;
+int8_t flappy_pipe;
+long flappy_delay;
 
 void menu_loop() {
 	d.clearDisplay();
@@ -79,7 +84,7 @@ void menu_loop() {
 	d.setCursor(11, 11);
 	d.print("Tetris");
 	d.setCursor(11, 20);
-	d.print("Flappy Bird");
+	d.print("FlappySmile");
 	d.setCursor(11, 29);
 	d.print("Highscores");
 	d.setCursor(11, 38);
@@ -90,6 +95,7 @@ void menu_loop() {
 
 	if(b_s.fell()) {
 		toneAC(NOTE_A6, volume, 25);
+		score = 0;
 		if(selected == 0) {
 			snake_length = 5;
 			snake_pushed = 0;
@@ -108,11 +114,14 @@ void menu_loop() {
 		} else if(selected == 1) {
 			current_game = TETRIS;
 		} else if(selected == 2) {
-			flappy_bird_pipes[0] = 0;
-			flappy_bird_pipes[1] = 0;
-			flappy_bird_pipes[2] = 0;
+			flappy_x = 0;
+			flappy_y = 24;
+			flappy_y_speed = 0;
+			flappy_counter = 0;
+			flappy_pipe = 12;
+			flappy_delay = 250;
 
-			current_game = FLAPPY_BIRD;
+			current_game = FLAPPY;
 		} else if(selected == 3) {
 			current_game = HIGHSCORES;
 		}
@@ -231,10 +240,72 @@ void snake_place_food() {
 }
 
 void tetris_loop () {
+
 }
 
-void flappy_bird_loop () {
+void flappy_loop () {
+	flappy_y += flappy_y_speed;
 
+	flappy_counter++;
+	if(flappy_counter > flappy_delay) {
+		flappy_counter = 0;
+		flappy_x++;
+	}
+
+	if(flappy_x > 120) {
+		flappy_x = 0;
+		flappy_pipe = random(24);
+	}
+
+	if(flappy_y_speed < 0) {
+		flappy_y_speed += 0.2;
+	} else {
+		flappy_y_speed += 0.075;
+	}
+
+	if(b_u.fell()) {
+		flappy_y_speed = -2;
+	}
+
+	if(flappy_y > 47 ||
+	  ((flappy_x > 54 && flappy_x < 62) &&
+	  (flappy_y < flappy_pipe+8 || flappy_y > flappy_pipe+16))) {
+		previous_game = FLAPPY;
+		current_game = GAME_OVER;
+	}
+
+	if(flappy_x == 70) {
+		score++;
+		flappy_delay *= 0.975;
+	}
+
+	flappy_x++;
+
+	d.clearDisplay();
+	d.setCursor(0,0);
+	d.print(flappy_y);
+	d.setCursor(0,10);
+	d.print(flappy_y_speed);
+	d.setCursor(0,25);
+	d.print(flappy_x);
+
+	d.drawLine(38, flappy_pipe+8, 46, flappy_pipe+16, 1);
+
+	d.fillRect(100-flappy_x, 0, 10, flappy_pipe, 1);
+	d.fillRect(100-flappy_x, flappy_pipe+24, 10, 100, 1);
+
+	d.fillRect(100-flappy_x-2, flappy_pipe-2, 14, 4, 1);
+	d.fillRect(100-flappy_x-2, flappy_pipe+22, 14, 4, 1);
+
+	d.drawCircle(42, flappy_y-1, 5, 1);
+	d.fillRect(39, flappy_y-3, 2, 2, 1);
+	d.fillRect(44, flappy_y-3, 2, 2, 1);
+	d.drawLine(39, flappy_y, 41, flappy_y+2, 1);
+	d.drawPixel(42, flappy_y+2, 1);
+	d.drawLine(43, flappy_y+2, 45, flappy_y, 1);
+	d.display();
+
+	delay(25);
 }
 
 void game_over_loop() {
@@ -254,7 +325,9 @@ void game_over_loop() {
 	int address;
 
 	switch(previous_game) {
-		case SNAKE: address = EEPROM_SNAKE; break;
+		case SNAKE:       address = EEPROM_SNAKE;       break;
+		case TETRIS:      address = EEPROM_TETRIS;      break;
+		case FLAPPY: address = EEPROM_FLAPPY; break;
 	}
 
 	byte highscore = EEPROM.read(address);
@@ -286,7 +359,13 @@ void highscores_loop() {
 	d.setCursor(0, 16);
 	d.print("Snake");
 	highscore = EEPROM.read(EEPROM_SNAKE);
-	if(highscore != 255) {
+	if(highscore < 10) {
+		d.setCursor(78, 16);
+		d.print(highscore);
+	} else if(highscore < 100) {
+		d.setCursor(72, 16);
+		d.print(highscore);
+	} else if(highscore < 255) {
 		d.setCursor(66, 16);
 		d.print(highscore);
 	}
@@ -294,15 +373,27 @@ void highscores_loop() {
 	d.setCursor(0, 26);
 	d.print("Tetris");
 	highscore = EEPROM.read(EEPROM_TETRIS);
-	if(highscore != 255) {
+	if(highscore < 10) {
+		d.setCursor(78, 26);
+		d.print(highscore);
+	} else if(highscore < 100) {
+		d.setCursor(72, 26);
+		d.print(highscore);
+	} else if(highscore < 255) {
 		d.setCursor(66, 26);
 		d.print(highscore);
 	}
 
 	d.setCursor(0, 36);
 	d.print("Flappy");
-	highscore = EEPROM.read(EEPROM_FLAPPY_BIRD);
-	if(highscore != 255) {
+	highscore = EEPROM.read(EEPROM_FLAPPY);
+	if(highscore < 10) {
+		d.setCursor(78, 36);
+		d.print(highscore);
+	} else if(highscore < 100) {
+		d.setCursor(72, 36);
+		d.print(highscore);
+	} else if(highscore < 255) {
 		d.setCursor(66, 36);
 		d.print(highscore);
 	}
@@ -372,8 +463,8 @@ void loop() {
 		snake_loop();
 	} else if(current_game == TETRIS) {
 		tetris_loop();
-	} else if(current_game == FLAPPY_BIRD) {
-		flappy_bird_loop();
+	} else if(current_game == FLAPPY) {
+		flappy_loop();
 	} else if(current_game == HIGHSCORES) {
 		highscores_loop();
 	} else if(current_game == GAME_OVER) {
