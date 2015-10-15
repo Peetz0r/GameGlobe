@@ -1,3 +1,5 @@
+local
+
 .build
 
 # Ignore list for Eagle, a PCB layout tool
