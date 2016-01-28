@@ -5566,14 +5566,14 @@ Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da
 </class>
 </classes>
 <parts>
-<part name="R8" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
-<part name="R6" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
-<part name="R2" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
-<part name="R4" library="resistor" deviceset="R-EU_" device="0411/15" value="10k"/>
-<part name="R3" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
-<part name="R7" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
-<part name="R5" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
-<part name="R9" library="resistor" deviceset="R-EU_" device="0411/15" value="20k"/>
+<part name="R8" library="resistor" deviceset="R-EU_" device="0411/15" value="1k"/>
+<part name="R6" library="resistor" deviceset="R-EU_" device="0411/15" value="1k"/>
+<part name="R2" library="resistor" deviceset="R-EU_" device="0411/15" value="1k"/>
+<part name="R4" library="resistor" deviceset="R-EU_" device="0411/15" value="1k"/>
+<part name="R3" library="resistor" deviceset="R-EU_" device="0411/15" value="2k"/>
+<part name="R7" library="resistor" deviceset="R-EU_" device="0411/15" value="2k"/>
+<part name="R5" library="resistor" deviceset="R-EU_" device="0411/15" value="2k"/>
+<part name="R9" library="resistor" deviceset="R-EU_" device="0411/15" value="2k"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="JP1" library="SparkFun-Connectors" deviceset="M08" device="" value="LCD"/>
