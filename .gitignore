@@ -1,6 +1,7 @@
 local
 
 .build
+.build_ano
 
 # Ignore list for Eagle, a PCB layout tool
 
