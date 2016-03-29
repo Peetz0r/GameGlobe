@@ -209,7 +209,7 @@ void snake_loop () {
 			if(i > 0 && tmp_snake_x == snake_pos[i]%21 && tmp_snake_y == snake_pos[i]/21) {
 				score = snake_length;
 				previous_game = SNAKE;
-				current_game = GAME_OVER;
+				game_over();
 			}
 		}
 		d.drawRoundRect(snake_food_x*4, snake_food_y*4, 4, 4, 2, 1);
@@ -265,8 +265,7 @@ void flappy_loop () {
 	  ((flappy_x > 52 && flappy_x < 68) &&
 	  (flappy_y < flappy_pipe+8 || flappy_y > flappy_pipe+20))) {
 		previous_game = FLAPPY;
-		current_game = GAME_OVER;
-		toneAC(NOTE_A5, volume, 25);  // TODO: debug
+		game_over();
 	}
 
 	if(flappy_x == 70) {
@@ -295,6 +294,53 @@ void flappy_loop () {
 	d.display();
 
 	delay(flappy_delay);
+}
+
+void game_over() {
+	current_game = GAME_OVER;
+
+	toneAC(NOTE_G6, volume, 50);
+	toneAC(NOTE_F6, volume, 50);
+	toneAC(NOTE_E6, volume, 50);
+	toneAC(NOTE_D6, volume, 50);
+	toneAC(NOTE_C6, volume, 50);
+	toneAC(NOTE_B6, volume, 50);
+	toneAC(NOTE_A6, volume, 50);
+	toneAC(NOTE_G5, volume, 50);
+	toneAC(NOTE_F5, volume, 50);
+	toneAC(NOTE_E5, volume, 50);
+	toneAC(NOTE_D5, volume, 50);
+	toneAC(NOTE_C5, volume, 50);
+	toneAC(NOTE_B5, volume, 50);
+	toneAC(NOTE_A5, volume, 50);
+	toneAC(NOTE_G4, volume, 50);
+	toneAC(NOTE_F4, volume, 50);
+	toneAC(NOTE_E4, volume, 50);
+	toneAC(NOTE_D4, volume, 50);
+	toneAC(NOTE_C4, volume, 50);
+	toneAC(NOTE_B4, volume, 50);
+	toneAC(NOTE_A4, volume, 50);
+	toneAC(NOTE_G3, volume, 50);
+	toneAC(NOTE_F3, volume, 50);
+	toneAC(NOTE_E3, volume, 50);
+	toneAC(NOTE_D3, volume, 50);
+	toneAC(NOTE_C3, volume, 50);
+	toneAC(NOTE_B3, volume, 50);
+	toneAC(NOTE_A3, volume, 50);
+	toneAC(NOTE_G2, volume, 50);
+	toneAC(NOTE_F2, volume, 50);
+	toneAC(NOTE_E2, volume, 50);
+	toneAC(NOTE_D2, volume, 50);
+	toneAC(NOTE_C2, volume, 50);
+	toneAC(NOTE_B2, volume, 50);
+	toneAC(NOTE_A2, volume, 50);
+	toneAC(NOTE_G1, volume, 50);
+	toneAC(NOTE_F1, volume, 50);
+	toneAC(NOTE_E1, volume, 50);
+	toneAC(NOTE_D1, volume, 50);
+	toneAC(NOTE_C1, volume, 50);
+	toneAC(NOTE_B1, volume, 50);
+	toneAC(NOTE_A1, volume, 50);
 }
 
 void game_over_loop() {
