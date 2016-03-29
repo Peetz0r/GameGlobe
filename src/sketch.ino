@@ -61,6 +61,13 @@ enum direction {
 direction snake_direction = LEFT;
 direction snake_direction_old = LEFT;
 
+uint16_t tetris_state[10];
+enum tetris_type {
+	I, J, L, O, S, T, Z
+};
+tetris_type tetris_current_type;
+tetris_type tetris_next_type;
+
 uint8_t flappy_x;
 float flappy_y;
 float flappy_y_speed;
@@ -111,6 +118,17 @@ void menu_loop() {
 
 			current_game = SNAKE;
 		} else if(selected == 1) {
+			tetris_state[0] = 0;
+			tetris_state[1] = 0;
+			tetris_state[2] = 0;
+			tetris_state[3] = 0;
+			tetris_state[4] = 0;
+			tetris_state[5] = 0;
+			tetris_state[6] = 0;
+			tetris_state[7] = 0;
+			tetris_state[8] = 0;
+			tetris_state[9] = 0;
+
 			current_game = TETRIS;
 		} else if(selected == 2) {
 			flappy_x = 0;
@@ -234,7 +252,16 @@ void snake_place_food() {
 }
 
 void tetris_loop () {
-
+	d.clearDisplay();
+	d.drawRect(26, -1, 31, 49, 1);
+	for(int x = 0; x < 10; x++) {
+		for(int y = 0; y < 16; y++) {
+			if(tetris_state[x] & (1 << y)) {
+				d.fillRect(27+x*3, y*3, 2, 2, 1);
+			}
+		}
+	}
+	d.display();
 }
 
 void flappy_loop () {
