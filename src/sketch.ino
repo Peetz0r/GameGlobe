@@ -64,7 +64,6 @@ direction snake_direction_old = LEFT;
 uint8_t flappy_x;
 float flappy_y;
 float flappy_y_speed;
-uint8_t flappy_counter;
 int8_t flappy_pipe;
 long flappy_delay;
 
@@ -117,9 +116,8 @@ void menu_loop() {
 			flappy_x = 0;
 			flappy_y = 24;
 			flappy_y_speed = 0;
-			flappy_counter = 0;
 			flappy_pipe = 12;
-			flappy_delay = 250;
+			flappy_delay = 50;
 
 			current_game = FLAPPY;
 		} else if(selected == 3) {
@@ -246,32 +244,33 @@ void tetris_loop () {
 void flappy_loop () {
 	flappy_y += flappy_y_speed;
 
-	flappy_counter++;
-	if(flappy_counter > flappy_delay) {
-		flappy_counter = 0;
-		flappy_x++;
-	}
-
+	// generate new pipes once in a while
 	if(flappy_x > 120) {
 		flappy_x = 0;
 		flappy_pipe = random(24);
 	}
 
+	// change vertical acceleration over time
 	if(flappy_y_speed < 0) {
+		// when moving up, decelerate quickly
 		flappy_y_speed += 0.2;
 	} else {
+		// when falling down, accelerate less quickly
 		flappy_y_speed += 0.075;
 	}
 
+	// (re)set vertical acceleration on button push
 	if(b_u.fell()) {
 		flappy_y_speed = -2;
 	}
 
+	// collision checking
 	if(flappy_y > 47 ||
-	  ((flappy_x > 54 && flappy_x < 62) &&
-	  (flappy_y < flappy_pipe+8 || flappy_y > flappy_pipe+16))) {
+	  ((flappy_x > 52 && flappy_x < 68) &&
+	  (flappy_y < flappy_pipe+8 || flappy_y > flappy_pipe+20))) {
 		previous_game = FLAPPY;
 		current_game = GAME_OVER;
+		toneAC(NOTE_A5, volume, 25);  // TODO: debug
 	}
 
 	if(flappy_x == 70) {
@@ -282,30 +281,24 @@ void flappy_loop () {
 	flappy_x++;
 
 	d.clearDisplay();
-	d.setCursor(0,0);
-	d.print(flappy_y);
-	d.setCursor(0,10);
-	d.print(flappy_y_speed);
-	d.setCursor(0,25);
-	d.print(flappy_x);
 
-	d.drawLine(38, flappy_pipe+8, 46, flappy_pipe+16, 1);
+	// pipes, narrow part
+	d.fillRect(100-flappy_x, 0, 10, flappy_pipe, 1); // upper
+	d.fillRect(100-flappy_x, flappy_pipe+28, 10, 100, 1); // lower
 
-	d.fillRect(100-flappy_x, 0, 10, flappy_pipe, 1);
-	d.fillRect(100-flappy_x, flappy_pipe+24, 10, 100, 1);
+	// pipes, wide part (edge)
+	d.fillRect(100-flappy_x-2, flappy_pipe-2, 14, 4, 1); // upper
+	d.fillRect(100-flappy_x-2, flappy_pipe+26, 14, 4, 1); // lower
 
-	d.fillRect(100-flappy_x-2, flappy_pipe-2, 14, 4, 1);
-	d.fillRect(100-flappy_x-2, flappy_pipe+22, 14, 4, 1);
-
-	d.drawCircle(42, flappy_y-1, 5, 1);
-	d.fillRect(39, flappy_y-3, 2, 2, 1);
-	d.fillRect(44, flappy_y-3, 2, 2, 1);
-	d.drawLine(39, flappy_y, 41, flappy_y+2, 1);
-	d.drawPixel(42, flappy_y+2, 1);
-	d.drawLine(43, flappy_y+2, 45, flappy_y, 1);
+	d.drawCircle(42, flappy_y-1, 5, 1); // face
+	d.fillRect(39, flappy_y-3, 2, 2, 1); // left eye
+	d.fillRect(44, flappy_y-3, 2, 2, 1); // right eye
+	d.drawLine(39, flappy_y, 41, flappy_y+2, 1); // left part of smile
+	d.drawPixel(42, flappy_y+2, 1); // center part of smile
+	d.drawLine(43, flappy_y+2, 45, flappy_y, 1); // right part of smile
 	d.display();
 
-	delay(25);
+	delay(flappy_delay);
 }
 
 void game_over_loop() {
