@@ -3,8 +3,8 @@
 #include <Bounce2.h>
 #include <toneAC.h>
 #include <EEPROM.h>
-#include "splash_logo.h"
 #include "pitches.h"
+#include "naam.h"
 
 #define PIN_U 2
 #define PIN_S 3
@@ -437,7 +437,21 @@ void setup() {
 	d.setContrast(55);
 
 	d.clearDisplay();
-	d.drawXBitmap(0,0, splash_logo, 84,48, 1);
+	d.setCursor(30, 2);
+	d.print("Deze");
+	d.setCursor(15, 10);
+	d.print("GameGlobe");
+	d.setCursor(21, 18);
+	d.print("is van:");
+	if(sizeof(NAAM) <= 8) {
+		d.setTextSize(2);
+		d.setCursor(int(42-(sizeof(NAAM)-1)*6), 32);
+		d.print(NAAM);
+		d.setTextSize(1);
+	} else {
+		d.setCursor(int(42-(sizeof(NAAM)-1)*3), 36);
+		d.print(NAAM);
+	}
 	d.display();
 
 	toneAC(NOTE_A5, volume, 100);
@@ -447,7 +461,7 @@ void setup() {
 	delay(100);
 
 	toneAC(NOTE_A5, volume, 200);
-	delay(1000);
+	delay(2000);
 }
 
 void loop() {
