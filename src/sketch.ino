@@ -198,12 +198,8 @@ void snake_loop () {
 			snake_place_food();
 			snake_delay *= 0.95;
 
-			toneAC(NOTE_E5, volume, 50); delay(50);
-			toneAC(NOTE_G5, volume, 50); delay(50);
-			toneAC(NOTE_E6, volume, 50); delay(50);
-			toneAC(NOTE_C6, volume, 50); delay(50);
-			toneAC(NOTE_D6, volume, 50); delay(50);
-			toneAC(NOTE_G6, volume, 50); delay(50);
+			toneAC(NOTE_G5, volume, 40); delay(40);
+			toneAC(NOTE_G6, volume, 40); delay(40);
 		} else {
 			toneAC(NOTE_A3, volume, 5);
 		}
