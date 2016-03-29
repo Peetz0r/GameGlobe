@@ -98,6 +98,10 @@ void menu_loop() {
 	d.print("Volume");
 	d.drawRect(52,37,         24,9, 1);
 	d.fillRect(54,39, (volume*2),5, 1);
+	if(volume == 0) {
+		d.drawLine(52,37, 75,45, 1);
+		d.drawLine(52,45, 75,37, 1);
+	}
 
 	if(b_s.fell()) {
 		toneAC(NOTE_A6, volume, 25);
