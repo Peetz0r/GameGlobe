@@ -67,6 +67,7 @@ uint16_t tetris_state[10];
 int8_t tetris_tetromino_x;
 int8_t tetris_tetromino_y;
 uint16_t tetris_tetromino_shape;
+uint16_t tetris_tetromino_next;
 
 uint8_t flappy_x;
 float flappy_y;
@@ -257,21 +258,41 @@ void snake_place_food() {
 	}
 }
 
+uint16_t tetris_new_shape() {
+	uint16_t shape;
+	switch (random(7)) {
+		case 0: shape = 0xf0; break; // I
+		case 1: shape = 0x47; break; // J
+		case 2: shape = 0x17; break; // L
+		case 3: shape = 0x33; break; // O
+		case 4: shape = 0x36; break; // S
+		case 5: shape = 0x27; break; // T
+		case 6: shape = 0x63; break; // Z
+	}
+	for(int i = random(4); i >= 0; i--) {
+		Serial.println("draai");
+	}
+	Serial.println(shape, BIN);
+	return shape;
+}
+
 void tetris_loop () {
 	if((millis() - tetris_last_frame) > tetris_delay / tetris_speed) {
 
 		toneAC(NOTE_A3, volume, 5);
 		if(!tetris_tetromino_shape) {
+			if(!tetris_tetromino_next) {
+				tetris_tetromino_next = tetris_new_shape();
+			}
+			tetris_tetromino_shape = tetris_tetromino_next;
+			tetris_tetromino_next = tetris_new_shape();
 			tetris_tetromino_x = 4;
-			tetris_tetromino_y = 0;
-			tetris_tetromino_shape = 0x0033; // O
-
+			tetris_tetromino_y = -1;
 			tetris_speed = 1;
 		}
 
-		tetris_draw();
+		tetris_draw(0, 1);
 
-		tetris_tetromino_y++;
 		tetris_last_frame = millis();
 	}
 
@@ -283,18 +304,66 @@ void tetris_loop () {
 	}
 
 	if(b_l.fell()) {
-		tetris_tetromino_x--;
-		tetris_draw();
+		tetris_draw(-1, 0);
 	}
 	if(b_r.fell()) {
-		tetris_tetromino_x++;
-		tetris_draw();
+		tetris_draw(1, 0);
 	}
 }
 
-void tetris_draw() {
+void tetris_draw(int m_x, int m_y) {
 	d.clearDisplay();
 	d.drawRect(26, -1, 31, 49, 1);
+
+	int tetris_move_ok = 1;
+
+	for(int t_x = 0; t_x < 4; t_x++) {
+		for(int t_y = 0; t_y < 4; t_y++) {
+			if(tetris_tetromino_shape & (1 << (t_y*4+t_x))) {
+				if(tetris_tetromino_y+m_y+t_y > 15
+				 || (tetris_state[tetris_tetromino_x+m_x+t_x] >> tetris_tetromino_y+m_y+t_y) & 1
+				 || tetris_tetromino_x+m_x+t_x > 9
+				 || tetris_tetromino_x+m_x+t_x < 0) {
+
+					Serial.println("colission");
+
+					if(tetris_tetromino_y < 1) {
+						score = 0;
+						previous_game = TETRIS;
+						game_over();
+					}
+
+					if(m_y) {
+						Serial.println("down!");
+						for(int x2 = 0; x2 < 4; x2++) {
+							for(int y2 = 0; y2 < 4; y2++) {
+								if(tetris_tetromino_shape & (1 << (y2*4+x2))) {
+									tetris_state[tetris_tetromino_x+m_x+x2] |= 1 << (tetris_tetromino_y+y2);
+								}
+							}
+						}
+						tetris_tetromino_shape = 0;
+					}
+
+					tetris_move_ok = 0;
+				}
+			}
+		}
+	}
+
+	if(tetris_move_ok) {
+		tetris_tetromino_x += m_x;
+		tetris_tetromino_y += m_y;
+	}
+
+	for(int t_x = 0; t_x < 4; t_x++) {
+		for(int t_y = 0; t_y < 4; t_y++) {
+			if(tetris_tetromino_shape & (1 << (t_y*4+t_x))) {
+				d.fillRect(27+(tetris_tetromino_x+t_x)*3, (tetris_tetromino_y+t_y)*3, 2, 2, 1);
+			}
+		}
+	}
+
 	for(int x = 0; x < 10; x++) {
 		for(int y = 0; y < 16; y++) {
 			if(tetris_state[x] & (1 << y)) {
@@ -303,41 +372,6 @@ void tetris_draw() {
 		}
 	}
 
-	for(int x = 0; x < 4; x++) {
-		for(int y = 0; y < 4; y++) {
-			if(tetris_tetromino_shape & (1 << (y*4+x))) {
-				if(tetris_tetromino_y+y >= 15 || (tetris_state[tetris_tetromino_x+x] >> tetris_tetromino_y+y) & 1) {
-					Serial.println("bodem");
-
-					for(int x2 = 0; x2 < 4; x2++) {
-						for(int y2 = 0; y2 < 4; y2++) {
-							if(tetris_tetromino_shape & (1 << (y2*4+x2))) {
-								Serial.print(tetris_tetromino_x+x2);
-								Serial.print(" - ");
-								Serial.print(15-y2);
-								Serial.print(" - ");
-								Serial.println(1 << (15-y2));
-								tetris_state[tetris_tetromino_x+x2] |= 1 << (tetris_tetromino_y-y2);
-							}
-						}
-					}
-					tetris_tetromino_shape = 0;
-					tetris_draw();
-				}
-				if(tetris_tetromino_x+x > 9) {
-					Serial.println("rechts");
-					tetris_tetromino_x--;
-					tetris_draw();
-				}
-				if(tetris_tetromino_x+x < 0) {
-					Serial.println("links");
-					tetris_tetromino_x++;
-					tetris_draw();
-				}
-				d.fillRect(27+(tetris_tetromino_x+x)*3, (tetris_tetromino_y+y)*3, 2, 2, 1);
-			}
-		}
-	}
 	d.display();
 }
 
