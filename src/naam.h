@@ -1,1 +1,1 @@
-#define NAAM "Peetz0r"
+#define NAAM "Peter"

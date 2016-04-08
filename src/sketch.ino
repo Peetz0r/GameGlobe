@@ -46,7 +46,6 @@ int8_t need_write_volume = 0;
 uint8_t score;
 
 uint8_t snake_length;
-uint8_t snake_pushed;
 uint8_t snake_pos[255];
 int8_t snake_food_x;
 int8_t snake_food_y;
@@ -61,12 +60,13 @@ enum direction {
 direction snake_direction = LEFT;
 direction snake_direction_old = LEFT;
 
+uint8_t tetris_speed;
+long tetris_delay;
+long tetris_last_frame = 0;
 uint16_t tetris_state[10];
-enum tetris_type {
-	I, J, L, O, S, T, Z
-};
-tetris_type tetris_current_type;
-tetris_type tetris_next_type;
+int8_t tetris_tetromino_x;
+int8_t tetris_tetromino_y;
+uint16_t tetris_tetromino_shape;
 
 uint8_t flappy_x;
 float flappy_y;
@@ -108,30 +108,32 @@ void menu_loop() {
 		score = 0;
 		if(selected == 0) {
 			snake_length = 5;
-			snake_pushed = 0;
 			snake_pos[0] = 115;
 			snake_pos[1] = 116;
 			snake_pos[2] = 117;
 			snake_pos[3] = 118;
 			snake_pos[4] = 119;
 			snake_delay = 350;
-			snake_pushed = 0;
 			snake_last_frame = 0;
 			snake_direction = LEFT;
 			snake_place_food();
 
 			current_game = SNAKE;
 		} else if(selected == 1) {
-			tetris_state[0] = 0;
-			tetris_state[1] = 0;
-			tetris_state[2] = 0;
-			tetris_state[3] = 0;
-			tetris_state[4] = 0;
-			tetris_state[5] = 0;
-			tetris_state[6] = 0;
-			tetris_state[7] = 0;
-			tetris_state[8] = 0;
-			tetris_state[9] = 0;
+			tetris_state[0] = 0b1100000000000000;
+			tetris_state[1] = 0b1100000000000000;
+			tetris_state[2] = 0b1100000000000000;
+			tetris_state[3] = 0b0000000000000000;
+			tetris_state[4] = 0b0000000000000000;
+			tetris_state[5] = 0b0000000000000000;
+			tetris_state[6] = 0b0000000000000000;
+			tetris_state[7] = 0b1111100000000000;
+			tetris_state[8] = 0b0100100000000000;
+			tetris_state[9] = 0b0010100000000000;
+
+			tetris_speed = 1;
+			tetris_delay = 350;
+			tetris_last_frame = 0;
 
 			current_game = TETRIS;
 		} else if(selected == 2) {
@@ -218,10 +220,10 @@ void snake_loop () {
 		if(tmp_snake_x == snake_food_x && tmp_snake_y == snake_food_y) {
 			snake_length++;
 			snake_place_food();
-			snake_delay *= 0.95;
+			snake_delay *= 0.975; // snake difficulty
 
-			toneAC(NOTE_G5, volume, 40); delay(40);
-			toneAC(NOTE_G6, volume, 40); delay(40);
+			toneAC(NOTE_G5, volume, 40); delay(20);
+			toneAC(NOTE_G6, volume, 40);
 		} else {
 			toneAC(NOTE_A3, volume, 5);
 		}
@@ -256,12 +258,83 @@ void snake_place_food() {
 }
 
 void tetris_loop () {
+	if((millis() - tetris_last_frame) > tetris_delay / tetris_speed) {
+
+		toneAC(NOTE_A3, volume, 5);
+		if(!tetris_tetromino_shape) {
+			tetris_tetromino_x = 4;
+			tetris_tetromino_y = 0;
+			tetris_tetromino_shape = 0x0033; // O
+
+			tetris_speed = 1;
+		}
+
+		tetris_draw();
+
+		tetris_tetromino_y++;
+		tetris_last_frame = millis();
+	}
+
+	if(b_d.fell()) {
+		tetris_speed = 10;
+	}
+	if(b_d.rose()) {
+		tetris_speed = 1;
+	}
+
+	if(b_l.fell()) {
+		tetris_tetromino_x--;
+		tetris_draw();
+	}
+	if(b_r.fell()) {
+		tetris_tetromino_x++;
+		tetris_draw();
+	}
+}
+
+void tetris_draw() {
 	d.clearDisplay();
 	d.drawRect(26, -1, 31, 49, 1);
 	for(int x = 0; x < 10; x++) {
 		for(int y = 0; y < 16; y++) {
 			if(tetris_state[x] & (1 << y)) {
-				d.fillRect(27+x*3, y*3, 2, 2, 1);
+					d.fillRect(27+x*3, y*3, 2, 2, 1);
+			}
+		}
+	}
+
+	for(int x = 0; x < 4; x++) {
+		for(int y = 0; y < 4; y++) {
+			if(tetris_tetromino_shape & (1 << (y*4+x))) {
+				if(tetris_tetromino_y+y >= 15 || (tetris_state[tetris_tetromino_x+x] >> tetris_tetromino_y+y) & 1) {
+					Serial.println("bodem");
+
+					for(int x2 = 0; x2 < 4; x2++) {
+						for(int y2 = 0; y2 < 4; y2++) {
+							if(tetris_tetromino_shape & (1 << (y2*4+x2))) {
+								Serial.print(tetris_tetromino_x+x2);
+								Serial.print(" - ");
+								Serial.print(15-y2);
+								Serial.print(" - ");
+								Serial.println(1 << (15-y2));
+								tetris_state[tetris_tetromino_x+x2] |= 1 << (tetris_tetromino_y-y2);
+							}
+						}
+					}
+					tetris_tetromino_shape = 0;
+					tetris_draw();
+				}
+				if(tetris_tetromino_x+x > 9) {
+					Serial.println("rechts");
+					tetris_tetromino_x--;
+					tetris_draw();
+				}
+				if(tetris_tetromino_x+x < 0) {
+					Serial.println("links");
+					tetris_tetromino_x++;
+					tetris_draw();
+				}
+				d.fillRect(27+(tetris_tetromino_x+x)*3, (tetris_tetromino_y+y)*3, 2, 2, 1);
 			}
 		}
 	}
@@ -473,6 +546,8 @@ void highscores_loop() {
 
 void setup() {
 	randomSeed(analogRead(A0));
+
+	Serial.begin(115200); // FIXME: debug!
 
 	volume = EEPROM.read(EEPROM_VOLUME);
 	if(volume >10) {
