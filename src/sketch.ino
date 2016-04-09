@@ -60,6 +60,32 @@ enum direction {
 direction snake_direction = LEFT;
 direction snake_direction_old = LEFT;
 
+#define TETRIS_I1 0x00f0
+#define TETRIS_I2 0x2222
+
+#define TETRIS_J1 0x0047
+#define TETRIS_J2 0x0322
+#define TETRIS_J3 0x0071
+#define TETRIS_J4 0x0113
+
+#define TETRIS_L1 0x0017
+#define TETRIS_L2 0x0223
+#define TETRIS_L3 0x0074
+#define TETRIS_L4 0x0311
+
+#define TETRIS_O1 0x0033
+
+#define TETRIS_S1 0x0036
+#define TETRIS_S2 0x0231
+
+#define TETRIS_T1 0x0027
+#define TETRIS_T2 0x0232
+#define TETRIS_T3 0x0072
+#define TETRIS_T4 0x0131
+
+#define TETRIS_Z1 0x0063
+#define TETRIS_Z2 0x0132
+
 uint8_t tetris_speed;
 long tetris_delay;
 long tetris_last_frame = 0;
@@ -261,18 +287,50 @@ void snake_place_food() {
 uint16_t tetris_new_shape() {
 	uint16_t shape;
 	switch (random(7)) {
-		case 0: shape = 0xf0; break; // I
-		case 1: shape = 0x47; break; // J
-		case 2: shape = 0x17; break; // L
-		case 3: shape = 0x33; break; // O
-		case 4: shape = 0x36; break; // S
-		case 5: shape = 0x27; break; // T
-		case 6: shape = 0x63; break; // Z
+		case 0: shape = TETRIS_I1; break;
+		case 1: shape = TETRIS_J1; break;
+		case 2: shape = TETRIS_L1; break;
+		case 3: shape = TETRIS_O1; break;
+		case 4: shape = TETRIS_S1; break;
+		case 5: shape = TETRIS_T1; break;
+		case 6: shape = TETRIS_Z1; break;
 	}
 	for(int i = random(4); i >= 0; i--) {
-		Serial.println("draai");
+		shape = tetris_rotate(shape);
 	}
-	Serial.println(shape, BIN);
+	return shape;
+}
+
+uint16_t tetris_rotate(uint16_t shape) {
+	switch(shape) {
+		case TETRIS_I1: return TETRIS_I2;
+		case TETRIS_I2: return TETRIS_I1;
+
+		case TETRIS_J1: return TETRIS_J2;
+		case TETRIS_J2: return TETRIS_J3;
+		case TETRIS_J3: return TETRIS_J4;
+		case TETRIS_J4: return TETRIS_J1;
+
+		case TETRIS_L1: return TETRIS_L2;
+		case TETRIS_L2: return TETRIS_L3;
+		case TETRIS_L3: return TETRIS_L4;
+		case TETRIS_L4: return TETRIS_L1;
+
+		case TETRIS_O1: return TETRIS_O1;
+
+		case TETRIS_S1: return TETRIS_S2;
+		case TETRIS_S2: return TETRIS_S1;
+
+		case TETRIS_T1: return TETRIS_T2;
+		case TETRIS_T2: return TETRIS_T3;
+		case TETRIS_T3: return TETRIS_T4;
+		case TETRIS_T4: return TETRIS_T1;
+
+		case TETRIS_Z1: return TETRIS_Z2;
+		case TETRIS_Z2: return TETRIS_Z1;
+
+		default: return shape;
+	}
 	return shape;
 }
 
@@ -309,6 +367,11 @@ void tetris_loop () {
 	if(b_r.fell()) {
 		tetris_draw(1, 0);
 	}
+
+	if(b_u.fell()) {
+		tetris_tetromino_shape = tetris_rotate(tetris_tetromino_shape);
+		tetris_draw(0, 0);
+	}
 }
 
 void tetris_draw(int m_x, int m_y) {
@@ -325,7 +388,11 @@ void tetris_draw(int m_x, int m_y) {
 				 || tetris_tetromino_x+m_x+t_x > 9
 				 || tetris_tetromino_x+m_x+t_x < 0) {
 
-					Serial.println("colission");
+					 if(m_x == 0 && m_y == 0) {
+						for(int i = 0; i < 3; i++) {
+							tetris_tetromino_shape = tetris_rotate(tetris_tetromino_shape);
+						}
+					 }
 
 					if(tetris_tetromino_y < 1) {
 						score = 0;
@@ -334,7 +401,6 @@ void tetris_draw(int m_x, int m_y) {
 					}
 
 					if(m_y) {
-						Serial.println("down!");
 						for(int x2 = 0; x2 < 4; x2++) {
 							for(int y2 = 0; y2 < 4; y2++) {
 								if(tetris_tetromino_shape & (1 << (y2*4+x2))) {
@@ -343,8 +409,8 @@ void tetris_draw(int m_x, int m_y) {
 							}
 						}
 						tetris_tetromino_shape = 0;
-					}
 
+					}
 					tetris_move_ok = 0;
 				}
 			}
