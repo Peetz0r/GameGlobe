@@ -150,16 +150,16 @@ void menu_loop() {
 			tetris_state[0] = 0b1100000000000000;
 			tetris_state[1] = 0b1100000000000000;
 			tetris_state[2] = 0b1100000000000000;
-			tetris_state[3] = 0b0000000000000000;
-			tetris_state[4] = 0b0000000000000000;
-			tetris_state[5] = 0b0000000000000000;
-			tetris_state[6] = 0b0000000000000000;
-			tetris_state[7] = 0b1111100000000000;
-			tetris_state[8] = 0b0100100000000000;
-			tetris_state[9] = 0b0010100000000000;
+			tetris_state[3] = 0b1100000000000000;
+			tetris_state[4] = 0b1100000000000000;
+			tetris_state[5] = 0b1100000000000000;
+			tetris_state[6] = 0b1100000000000000;
+			tetris_state[7] = 0b1100000000000000;
+			tetris_state[8] = 0b1100000000000000;
+			tetris_state[9] = 0b1100000000000000;
 
 			tetris_speed = 1;
-			tetris_delay = 350;
+			tetris_delay = 500;
 			tetris_last_frame = 0;
 
 			current_game = TETRIS;
@@ -376,7 +376,7 @@ void tetris_loop () {
 
 void tetris_draw(int m_x, int m_y) {
 	d.clearDisplay();
-	d.drawRect(26, -1, 31, 49, 1);
+	d.drawRect(11, -1, 31, 49, 1);
 
 	int tetris_move_ok = 1;
 
@@ -395,9 +395,9 @@ void tetris_draw(int m_x, int m_y) {
 					 }
 
 					if(tetris_tetromino_y < 1) {
-						score = 0;
 						previous_game = TETRIS;
 						game_over();
+						return;
 					}
 
 					if(m_y) {
@@ -409,6 +409,32 @@ void tetris_draw(int m_x, int m_y) {
 							}
 						}
 						tetris_tetromino_shape = 0;
+
+						int points = 0;
+						for(int i = 0; i < 16; i++) {
+							int test = 1;
+							for(int j = 0; j < 10; j++) {
+								test &= (tetris_state[j] >> i) &1;
+							}
+							if(test) {
+								if(!points) {
+									points = 1;
+								} else {
+									points *= 2;
+								}
+								Serial.println(i);
+								for(int j = 0; j < 10; j++) {
+									uint16_t mask_r = pow(2, i+1)-1;
+									uint16_t mask_l = ~mask_r;
+									tetris_state[j] = (tetris_state[j]&mask_l) | (tetris_state[j]&mask_r) << 1;
+								}
+
+								i--;
+							}
+						}
+						score += points;
+
+						tetris_delay *= 0.975;
 
 					}
 					tetris_move_ok = 0;
@@ -425,7 +451,7 @@ void tetris_draw(int m_x, int m_y) {
 	for(int t_x = 0; t_x < 4; t_x++) {
 		for(int t_y = 0; t_y < 4; t_y++) {
 			if(tetris_tetromino_shape & (1 << (t_y*4+t_x))) {
-				d.fillRect(27+(tetris_tetromino_x+t_x)*3, (tetris_tetromino_y+t_y)*3, 2, 2, 1);
+				d.fillRect(12+(tetris_tetromino_x+t_x)*3, (tetris_tetromino_y+t_y)*3, 2, 2, 1);
 			}
 		}
 	}
@@ -433,10 +459,23 @@ void tetris_draw(int m_x, int m_y) {
 	for(int x = 0; x < 10; x++) {
 		for(int y = 0; y < 16; y++) {
 			if(tetris_state[x] & (1 << y)) {
-					d.fillRect(27+x*3, y*3, 2, 2, 1);
+					d.fillRect(12+x*3, y*3, 2, 2, 1);
 			}
 		}
 	}
+
+	for(int t_x = 0; t_x < 4; t_x++) {
+		for(int t_y = 0; t_y < 4; t_y++) {
+			if(tetris_tetromino_next & (1 << (t_y*4+t_x))) {
+				d.fillRect(60+t_x*3, 6+t_y*3, 2, 2, 1);
+			}
+		}
+	}
+
+	d.setCursor(49, 26);
+	d.print("Score");
+	d.setCursor(55, 36);
+	d.print(score);
 
 	d.display();
 }
