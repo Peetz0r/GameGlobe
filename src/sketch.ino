@@ -328,10 +328,7 @@ uint16_t tetris_rotate(uint16_t shape) {
 
 		case TETRIS_Z1: return TETRIS_Z2;
 		case TETRIS_Z2: return TETRIS_Z1;
-
-		default: return shape;
 	}
-	return shape;
 }
 
 void tetris_loop () {
