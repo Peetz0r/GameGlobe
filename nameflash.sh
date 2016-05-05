@@ -2,6 +2,6 @@
 
 echo "#define NAAM \"$@\"" > src/naam.h
 
-ano clean
-ano build
+ano clean &&
+ano build &&
 ano upload
