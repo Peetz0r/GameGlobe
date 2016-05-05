@@ -425,7 +425,7 @@ void tetris_draw(int m_x, int m_y) {
 								Serial.println(i);
 
 								for(int j = 0; j < 10; j++) {
-									uint16_t mask_r = pow(2, i+1)-1;
+									uint16_t mask_r = (1 << i+1)-1;
 									uint16_t mask_l = ~mask_r;
 									tetris_state[j] = (tetris_state[j]&mask_l) | (tetris_state[j]&mask_r>>1) << 1;
 								}
