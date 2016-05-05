@@ -1,1 +1,1 @@
-#define NAAM "Peter"
+#define NAAM "Globetrotter"

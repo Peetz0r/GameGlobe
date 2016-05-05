@@ -41,8 +41,8 @@ game current_game = MENU;
 game previous_game;
 
 int8_t selected = 0;
-int8_t volume = 5;
-int8_t need_write_volume = 0;
+uint8_t volume;
+uint8_t need_write_volume = 0;
 uint8_t score;
 
 uint8_t snake_length;
@@ -147,16 +147,16 @@ void menu_loop() {
 
 			current_game = SNAKE;
 		} else if(selected == 1) {
-			tetris_state[0] = 0b1100000000000000;
-			tetris_state[1] = 0b1100000000000000;
-			tetris_state[2] = 0b1100000000000000;
-			tetris_state[3] = 0b1100000000000000;
-			tetris_state[4] = 0b1100000000000000;
-			tetris_state[5] = 0b1100000000000000;
-			tetris_state[6] = 0b1100000000000000;
-			tetris_state[7] = 0b1100000000000000;
-			tetris_state[8] = 0b1100000000000000;
-			tetris_state[9] = 0b1100000000000000;
+			tetris_state[0] = 0;
+			tetris_state[1] = 0;
+			tetris_state[2] = 0;
+			tetris_state[3] = 0;
+			tetris_state[4] = 0;
+			tetris_state[5] = 0;
+			tetris_state[6] = 0;
+			tetris_state[7] = 0;
+			tetris_state[8] = 0;
+			tetris_state[9] = 0;
 
 			tetris_speed = 1;
 			tetris_delay = 500;
@@ -434,7 +434,7 @@ void tetris_draw(int m_x, int m_y) {
 						}
 						score += points;
 
-						tetris_delay *= 0.975;
+						tetris_delay *= 0.985; // tetris difficulty (should be closer to 1 than snake)
 
 					}
 					tetris_move_ok = 0;
