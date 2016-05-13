@@ -428,6 +428,10 @@ void tetris_draw(int m_x, int m_y) {
 								}
 
 								i--;
+
+								// beep!
+								toneAC(NOTE_G5, volume, 40); delay(20);
+								toneAC(NOTE_G6, volume, 40);
 							}
 						}
 						score += points;
