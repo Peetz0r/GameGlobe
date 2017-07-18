@@ -1,7 +1,7 @@
-#include <Adafruit_GFX.h>
-#include <Adafruit_PCD8544.h>
-#include <Bounce2.h>
-#include <toneAC.h>
+#include "../lib/Adafruit-GFX-Library/Adafruit_GFX.h"
+#include "../lib/Adafruit_PCD8544.h"
+#include "../lib/Bounce2/Bounce2.h"
+#include "../lib/arduino-toneac/toneAC.h"
 #include <EEPROM.h>
 #include "pitches.h"
 #include "naam.h"
